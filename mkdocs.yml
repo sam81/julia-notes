@@ -1,9 +1,10 @@
 site_name: Julia Notes
+site_author: Samuele Carcagno
 theme: readthedocs
 pages:
     - Introduction: 'index.md'
     - Data Types: 'datatypes.md'
     - DataFrames: 'dataframes.md'
     - Parallel Processing: 'parallel_processing.md'
-
+    - Data Visualization: 'plotting.md'
 

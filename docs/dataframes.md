@@ -38,3 +38,10 @@ to write a dataframe to a text of CSV file, use:
 ```julia
 writetable("dataframe.csv", resFrame)
 ```
+
+it is also possible to specify a separator, note that the separator character must be enclosed by
+single ticks `''`:
+
+```julia
+writetable("dataframe.csv", resFrame, separator=';')
+```
