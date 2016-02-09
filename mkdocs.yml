@@ -1,0 +1,8 @@
+site_name: Julia Notes
+theme: readthedocs
+pages:
+    - Introduction: 'index.md'
+    - Parallel Processing: 'parallel_processing.md'
+    - DataFrames: 'dataframes.md'
+
+
