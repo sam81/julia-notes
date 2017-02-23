@@ -1,5 +1,12 @@
 ## Data Visualization
 
+###PyPlot (matplotlib)
+
+```{julia}
+using PyCall, PyPlot
+x = collect(0:0.1:2*pi)
+plot(x, sin(x))
+```
 ##### Saving multiple plots in one pdf with PyPlot
 
 ```{julia}
