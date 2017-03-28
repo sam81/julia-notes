@@ -1,6 +1,4 @@
-## Data Visualization
-
-###PyPlot (matplotlib)
+##PyPlot (matplotlib)
 
 ```{julia}
 using PyCall, PyPlot

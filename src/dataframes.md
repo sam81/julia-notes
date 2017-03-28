@@ -3,6 +3,7 @@
 In Julia dataframes are handled by an addon package. It can be installed with:
 
 ````julia
+
 Pkg.add("DataFrames")
 ````
 
@@ -36,6 +37,31 @@ to access the columns of a dataframe use the following syntax:
 ````julia
 resFrame[:y] #retrieves the column named `y`
 resFrame[:cnd] #retrieves the column named `cnd`
+````
+
+
+
+
+
+note that `:y` or `:cnd` are *Symbols*:
+
+````julia
+typeof(:y)
+````
+
+
+````
+Symbol
+````
+
+
+
+
+
+sometimes it is necessary to access the column of a dataframe using a string. You can do so by converting a string to a symbol:
+
+````julia
+resFrame[Symbol("y")]
 ````
 
 
@@ -76,6 +102,7 @@ writetable("dataframe.csv", resFrame, separator=';')
 Selecting:
 
 ````julia
+
 ds[(ds[:montage] .== "FzIpsiMast") & (ds[:ear] .== "both"), :]
 ````
 

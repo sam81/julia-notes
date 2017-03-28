@@ -1,6 +1,4 @@
-## Data Visualization
-
-###PyPlot (matplotlib)
+##PyPlot (matplotlib)
 
 ````julia
 using PyCall, PyPlot
@@ -11,7 +9,7 @@ plot(x, sin(x))
 
 ````
 1-element Array{Any,1}:
- PyObject <matplotlib.lines.Line2D object at 0x7ff0e1d56b00>
+ PyObject <matplotlib.lines.Line2D object at 0x7fdbe8773f28>
 ````
 
 

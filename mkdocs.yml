@@ -1,6 +1,7 @@
 site_name: Julia Notes
 site_author: Samuele Carcagno
 theme: readthedocs
+repo_url: https://github.com/sam81/julia-notes
 
 extra_css:
   - assets/Documenter.css
@@ -21,5 +22,5 @@ pages:
     - Data Types: 'datatypes.md'
     - DataFrames: 'dataframes.md'
     - Parallel Processing: 'parallel_processing.md'
-    - Data Visualization: 'plotting.md'
-
+    - Graphics - Gadfly: 'gadfly.md'
+    - Graphics - PyPlot: 'pyplot.md'

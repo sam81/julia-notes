@@ -27,6 +27,18 @@ resFrame[:y] #retrieves the column named `y`
 resFrame[:cnd] #retrieves the column named `cnd`
 ```
 
+note that `:y` or `:cnd` are *Symbols*:
+
+```{julia}
+typeof(:y)
+```
+
+sometimes it is necessary to access the column of a dataframe using a string. You can do so by converting a string to a symbol:
+
+```{julia}
+resFrame[Symbol("y")]
+```
+
 you can also retrieve a column by its column number
 
 ```{julia}
