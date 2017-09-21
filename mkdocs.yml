@@ -21,6 +21,7 @@ pages:
     - Introduction: 'index.md'
     - Data Types: 'datatypes.md'
     - DataFrames: 'dataframes.md'
+    - Random Numbers and Sampling: 'random.md'
     - Parallel Processing: 'parallel_processing.md'
     - Graphics - Gadfly: 'gadfly.md'
     - Graphics - PyPlot: 'pyplot.md'

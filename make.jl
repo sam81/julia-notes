@@ -9,7 +9,7 @@ if ispath("site/")
 end
 
 fls = ["dataframes.Rmd", "datatypes.Rmd", "index.Rmd",
-       "parallel_processing.Rmd", "gadfly.Rmd"]
+       "parallel_processing.Rmd", "gadfly.Rmd", "random.Rmd"]
 
 
 cd("raw_docs")

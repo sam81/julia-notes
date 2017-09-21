@@ -2,3 +2,4 @@
 
 julia make.jl
 julia make2.jl
+mkdocs build
