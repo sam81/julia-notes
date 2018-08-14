@@ -6,10 +6,16 @@ In Julia dataframes are handled by an addon package. It can be installed with:
 Pkg.add("DataFrames")
 ```
 
-to use DataFrames you need to load the package:
+it's very likely that you will want to read and write dataframes as CSV files at some stage. This functionality is provided by the `CSV.jl` package, so you should install it as well:
+
+```{julia; eval=false}
+Pkg.add("CSV")
+```
+
+to use the `DataFrames` and `CSV` packages you need to load them:
 
 ```{julia}
-using DataFrames
+using CSV, DataFrames
 ```
 
 let's create a numeric vector and a string vector of the same length, and then put them in a dataframe:
@@ -48,14 +54,14 @@ resFrame[1]
 to write a dataframe to a text of CSV file, use:
 
 ```{julia}
-writetable("dataframe.csv", resFrame)
+CSV.write("dataframe.csv", resFrame)
 ```
 
 it is also possible to specify a separator, note that the separator character must be enclosed by
 single ticks `''`:
 
 ```{julia}
-writetable("dataframe.csv", resFrame, separator=';')
+CSV.write("dataframe.csv", resFrame, delim=';')
 ```
 
 Selecting:

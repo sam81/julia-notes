@@ -8,14 +8,14 @@ rand()
 
 
 ````
-0.7894848157139365
+0.3756298549353758
 ````
 
 
 
 
 
-to generate a random integer between say 1 and 100 you need to pass that collection as an argument:
+to generate a random integer between say 1 and 100 we need to pass that collection as an argument:
 
 ````julia
 rand(1:100)
@@ -23,7 +23,7 @@ rand(1:100)
 
 
 ````
-74
+94
 ````
 
 
@@ -39,7 +39,7 @@ rand(lettersSeq)
 
 
 ````
-"a"
+"c"
 ````
 
 
@@ -61,10 +61,11 @@ rand(1:100, 2, 5) #generate a 2x5 matrix of
 	
 ### Setting the random seed
 
-It is sometimes desirable that a call to a random number generator actually generates the same "random" sequence each time it is called at a specific point in a script (e.g. to make an example reproducible). To achieve this it is necessary to explicitly initialize the random number generator with a ["seed"](https://en.wikipedia.org/wiki/Random_seed). In julia this can be done with the `srand` function:
+It is sometimes desirable that a call to a random number generator actually generates the same "random" sequence each time it is called at a specific point in a script (e.g. to make an example reproducible). To achieve this it is necessary to explicitly initialize the random number generator with a ["seed"](https://en.wikipedia.org/wiki/Random_seed). In julia this can be done with the `srand` function in the standard library package `Random`:
    
 ````julia
 
-srand(375)
+import Random
+Random.seed!(375)
 ````
 

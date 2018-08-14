@@ -9,11 +9,10 @@ plot(x, sin.(x))
 
 ````
 1-element Array{PyCall.PyObject,1}:
- PyObject <matplotlib.lines.Line2D object at 0x7fa9cb15ee48>
+ PyObject <matplotlib.lines.Line2D object at 0x7f316fd524e0>
 ````
 
 
-![](figures/pyplot_1_1.png)
 
 
 ##### Saving multiple plots in one pdf with PyPlot

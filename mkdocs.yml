@@ -25,3 +25,4 @@ pages:
     - Parallel Processing: 'parallel_processing.md'
     - Graphics - Gadfly: 'gadfly.md'
     - Graphics - PyPlot: 'pyplot.md'
+    - Workflow: 'workflow.md'
