@@ -2,15 +2,6 @@
 
 ````julia
 using Gadfly
-````
-
-
-<pre class="julia-error">
-ERROR: Failed to precompile Gadfly &#91;c91e804a-d5a3-530f-b6f0-dfbca275c004&#93; to /home/sam/.julia/compiled/v0.7/Gadfly/DvECm.ji.
-</pre>
-
-
-````julia
 
 x = collect(0:0.1:2*pi)
 plot(x=x, y=sin.(x), Geom.line,
@@ -19,6 +10,12 @@ plot(x=x, y=sin.(x), Geom.line,
 
 
 <pre class="julia-error">
-ERROR: UndefVarError: Guide not defined
+ERROR: Cairo and Fontconfig are necessary for the PNG backend. Run:
+  Pkg.add&#40;&quot;Cairo&quot;&#41;
+  Pkg.add&#40;&quot;Fontconfig&quot;&#41;
+You also have to delete /home/sam/.julia/lib/v0.6/Compose.ji
+and restart your REPL session afterwards.
+
 </pre>
 
+![](figures/gadfly_1_1.png)

@@ -27,12 +27,6 @@ using CSV, DataFrames
 ````
 
 
-<pre class="julia-error">
-ERROR: ArgumentError: Package CSV not found in current path:
-- Run &#96;Pkg.add&#40;&quot;CSV&quot;&#41;&#96; to install the CSV package.
-
-</pre>
-
 
 
 
@@ -45,10 +39,6 @@ resFrame =  DataFrame(y=y, cnd=cnd)
 ````
 
 
-<pre class="julia-error">
-ERROR: UndefVarError: DataFrame not defined
-</pre>
-
 
 
 
@@ -56,22 +46,24 @@ to access the columns of a dataframe use the following syntax:
 
 ````julia
 resFrame[:y] #retrieves the column named `y`
-````
-
-
-<pre class="julia-error">
-ERROR: UndefVarError: resFrame not defined
-</pre>
-
-
-````julia
 resFrame[:cnd] #retrieves the column named `cnd`
 ````
 
 
-<pre class="julia-error">
-ERROR: UndefVarError: resFrame not defined
-</pre>
+````
+10-element Array{String,1}:
+ "a"
+ "a"
+ "a"
+ "a"
+ "a"
+ "b"
+ "b"
+ "b"
+ "b"
+ "b"
+````
+
 
 
 
@@ -98,9 +90,20 @@ resFrame[Symbol("y")]
 ````
 
 
-<pre class="julia-error">
-ERROR: UndefVarError: resFrame not defined
-</pre>
+````
+10-element Array{Float64,1}:
+ 0.524485 
+ 0.751981 
+ 0.622919 
+ 0.81969  
+ 0.0886836
+ 0.54748  
+ 0.934634 
+ 0.28916  
+ 0.432015 
+ 0.0467469
+````
+
 
 
 
@@ -112,9 +115,20 @@ resFrame[1]
 ````
 
 
-<pre class="julia-error">
-ERROR: UndefVarError: resFrame not defined
-</pre>
+````
+10-element Array{Float64,1}:
+ 0.524485 
+ 0.751981 
+ 0.622919 
+ 0.81969  
+ 0.0886836
+ 0.54748  
+ 0.934634 
+ 0.28916  
+ 0.432015 
+ 0.0467469
+````
+
 
 
 
@@ -126,9 +140,21 @@ CSV.write("dataframe.csv", resFrame)
 ````
 
 
-<pre class="julia-error">
-ERROR: UndefVarError: CSV not defined
-</pre>
+````
+CSV.Sink{Void,DataType}(    CSV.Options:
+        delim: ','
+        quotechar: '"'
+        escapechar: '\\'
+        missingstring: ""
+        dateformat: nothing
+        decimal: '.'
+        truestring: 'true'
+        falsestring: 'false'
+        internstrings: true, IOBuffer(data=UInt8[...], readable=true, writa
+ble=true, seekable=true, append=false, size=0, maxsize=Inf, ptr=1, mark=-1)
+, "dataframe.csv", 6, true, String["y", "cnd"], 2, false, Val{false})
+````
+
 
 
 
@@ -141,9 +167,21 @@ CSV.write("dataframe.csv", resFrame, delim=';')
 ````
 
 
-<pre class="julia-error">
-ERROR: UndefVarError: CSV not defined
-</pre>
+````
+CSV.Sink{Void,DataType}(    CSV.Options:
+        delim: ';'
+        quotechar: '"'
+        escapechar: '\\'
+        missingstring: ""
+        dateformat: nothing
+        decimal: '.'
+        truestring: 'true'
+        falsestring: 'false'
+        internstrings: true, IOBuffer(data=UInt8[...], readable=true, writa
+ble=true, seekable=true, append=false, size=0, maxsize=Inf, ptr=1, mark=-1)
+, "dataframe.csv", 6, true, String["y", "cnd"], 2, false, Val{false})
+````
+
 
 
 
