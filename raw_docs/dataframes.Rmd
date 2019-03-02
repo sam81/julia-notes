@@ -17,7 +17,20 @@ to use the `DataFrames` and `CSV` packages you need to load them:
 ```{julia}
 using CSV, DataFrames
 ```
-
+	
+For the examples we'll use the `iris` dataset from the `RDatasets` package, so
+we'll need to install it first if it's not already installed:
+      
+```{julia; eval=false}
+Pkg.add("RDatasets")
+```
+we can now load it and load the `iris` dataset:
+   
+```{julia; eval=true}
+using RDatasets
+iris = dataset("datasets", "iris")
+```
+	
 let's create a numeric vector and a string vector of the same length, and then put them in a dataframe:
 
 ```{julia}
@@ -64,8 +77,99 @@ single ticks `''`:
 CSV.write("dataframe.csv", resFrame, delim=';')
 ```
 
-Selecting:
+### Displaying data on screen
 
-```{julia; eval=false}
-ds[(ds[:montage] .== "FzIpsiMast") & (ds[:ear] .== "both"), :]
+To show the first few rows of a dataframe on screen you can use the `first`
+function, which takes as arguments the name of the dataframe and the number of
+rows that you want to show:
+     	 
+```{julia; eval=true}
+first(iris, 4)
 ```
+
+similarly to show the last few columns you can use the `last` command:
+	  
+```{julia; eval=true}
+last(iris, 4)
+```
+
+If you have a dataframe with too many columns to fit the screen some will be truncated. To get around this you can use:
+   
+```{julia; eval=false}
+##create dataframe with lost of columns
+df = DataFrame((Symbol('a' + i) => rand(10) for i in 0:100)...)
+show(df, allcols=true)
+```
+		  
+### Selecting rows
+
+We've already seen how we can select a given column of a dataframe. Selecting
+rows of a dataframe on the basis of one or more conditions is another fundamental
+operation. 
+
+the following command returns a boolean vector indicating whether 
+each element in the `Species` column of the iris datasets is "setosa" or not:
+
+```{julia; eval=true}
+idx = iris[:Species] .== "setosa";
+```
+
+we can use this vector to select the corresponding rows of the dataframe:
+   	
+```{julia; eval=true}
+iris[idx, :];
+```
+
+or more succintly we could achieve the same result with a single command:
+   
+```{julia; eval=true}
+iris[(iris[:Species] .== "setosa"), :];
+```
+
+we can also setect rows on the basis of multiple conditions, for example
+only the ones for the setosa specimens with a petal length greater than 1.5:
+     	
+```{julia; eval=true}
+iris[(iris[:Species] .== "setosa") .& (iris[:PetalLength] .> 1.5), :]	    
+```
+
+The `DataFramesMeta` package also provides convenient functions for selecting rows
+of a dataframes on the basis of one or more conditions.
+
+```{julia; eval=true}
+using DataFramesMeta
+@where(iris, :Species .== "setosa")
+```
+	
+```{julia; eval=true}
+@where(iris, :Species .== "setosa", :PetalLength .> 1.5)
+```	     	
+
+### Summarizing data
+
+Summarizing data with the functions providing in the `DataFrames` package is
+somwhat verbose:	   
+	    
+```{julia; eval=true}
+using Statistics	
+summIris = by(iris, [:Species], df -> DataFrame(meanPetalWidth=mean(df[:PetalWidth])))
+```
+	
+using the macros in `DataFramesMeta` is much better
+
+```{julia; eval=true}
+summIris = @linq iris |> groupby(:Species) |> based_on(x = mean(:PetalWidth))
+```
+
+there are slightly different ways of achieving the same result:
+
+```{julia; eval=true}
+@linq iris |> by(:Species, x=mean(:SepalWidth))
+```
+	  	
+or:
+		
+```{julia; eval=true}
+@based_on(groupby(iris, :Species), x=mean(:PetalWidth))		 	
+```	
+		

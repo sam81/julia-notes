@@ -1,4 +1,4 @@
-using Documenter, Weave
+using Documenter, DocumenterMarkdown, Weave
 
 fls = ["pyplot.Rmd"]
 
@@ -11,5 +11,5 @@ end
 
 cd("../")
 
-makedocs()
+makedocs(format = Markdown())
 

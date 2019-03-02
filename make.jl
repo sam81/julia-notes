@@ -1,4 +1,4 @@
-using Documenter, Weave
+using Documenter, DocumenterMarkdown, Weave
 
 if ispath("build/")
     rm("build/", recursive=true)
@@ -22,5 +22,5 @@ end
 
 cd("../")
 
-makedocs()
+makedocs(format = Markdown())
 
