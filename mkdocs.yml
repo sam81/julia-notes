@@ -26,4 +26,5 @@ pages:
     - Graphics - Gadfly: 'gadfly.md'
     - Graphics - VegaLite: 'vegalite.md'
     - Graphics - PyPlot: 'pyplot.md'
+    - Graphics - ggplot2: 'ggplot2.md'
     - Workflow: 'workflow.md'

@@ -1,4 +1,4 @@
-###Gadfly
+##Gadfly
 
 ````julia
 using Gadfly
