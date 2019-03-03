@@ -9,7 +9,7 @@ plot(x, sin.(x))
 
 ````
 1-element Array{PyCall.PyObject,1}:
- PyObject <matplotlib.lines.Line2D object at 0x7f1919780e10>
+ PyObject <matplotlib.lines.Line2D object at 0x7f48c13b9be0>
 ````
 
 

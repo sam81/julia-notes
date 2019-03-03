@@ -9,6 +9,11 @@ z = (String)[] # string
 ````
 
 
+````
+0-element Array{String,1}
+````
+
+
 
 
 
@@ -35,6 +40,14 @@ Nested dictionaries:
 mydict = Dict{String, Any}()
 mydict["nest1"] = Dict{String, Any}()
 mydict["nest1"]["nest2"] = [1,2,3]
+````
+
+
+````
+3-element Array{Int64,1}:
+ 1
+ 2
+ 3
 ````
 
 

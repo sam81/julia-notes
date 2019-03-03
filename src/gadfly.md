@@ -1,4 +1,4 @@
-##Gadfly
+###Gadfly
 
 ````julia
 using Gadfly
@@ -10,3 +10,33 @@ plot(x=x, y=sin.(x), Geom.line,
 
 
 ![](figures/gadfly_1_1.png)
+
+````julia
+using RDatasets
+iris = dataset("datasets", "iris")
+plot(iris, x="SepalLength", y="SepalWidth", color="Species", Geom.point)
+````
+
+
+![](figures/gadfly_2_1.png)
+
+
+
+Facets:
+
+````julia
+plot(iris, xgroup="Species", x="SepalLength", y="SepalWidth", Geom.subplot_grid(Geom.point))
+````
+
+
+![](figures/gadfly_3_1.png)
+
+````julia
+oats = dataset("MASS", "oats")
+oats[:Nitro] = [parse(Float64, split(oats[:N][i], "c")[1]) for i=1:length(oats[:N])]
+set_default_plot_size(16cm, 16cm)
+plot(oats, xgroup="V", ygroup="B", x="Nitro", y="Y", Geom.subplot_grid(Geom.point, Geom.line), Guide.xlabel("Nitro by Variety"), Guide.ylabel("Yeld By Block"))
+````
+
+
+![](figures/gadfly_4_1.png)

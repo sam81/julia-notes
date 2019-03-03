@@ -24,5 +24,6 @@ pages:
     - Random Numbers and Sampling: 'random.md'
     - Parallel Processing: 'parallel_processing.md'
     - Graphics - Gadfly: 'gadfly.md'
+    - Graphics - VegaLite: 'vegalite.md'
     - Graphics - PyPlot: 'pyplot.md'
     - Workflow: 'workflow.md'

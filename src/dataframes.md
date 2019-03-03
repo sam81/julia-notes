@@ -48,6 +48,48 @@ iris = dataset("datasets", "iris")
 ````
 
 
+````
+150×5 DataFrames.DataFrame
+│ Row │ SepalLength │ SepalWidth │ PetalLength │ PetalWidth │ Species      
+│
+│     │ Float64     │ Float64    │ Float64     │ Float64    │ Categorical… 
+│
+├─────┼─────────────┼────────────┼─────────────┼────────────┼──────────────
+┤
+│ 1   │ 5.1         │ 3.5        │ 1.4         │ 0.2        │ setosa       
+│
+│ 2   │ 4.9         │ 3.0        │ 1.4         │ 0.2        │ setosa       
+│
+│ 3   │ 4.7         │ 3.2        │ 1.3         │ 0.2        │ setosa       
+│
+│ 4   │ 4.6         │ 3.1        │ 1.5         │ 0.2        │ setosa       
+│
+│ 5   │ 5.0         │ 3.6        │ 1.4         │ 0.2        │ setosa       
+│
+│ 6   │ 5.4         │ 3.9        │ 1.7         │ 0.4        │ setosa       
+│
+│ 7   │ 4.6         │ 3.4        │ 1.4         │ 0.3        │ setosa       
+│
+⋮
+│ 143 │ 5.8         │ 2.7        │ 5.1         │ 1.9        │ virginica    
+│
+│ 144 │ 6.8         │ 3.2        │ 5.9         │ 2.3        │ virginica    
+│
+│ 145 │ 6.7         │ 3.3        │ 5.7         │ 2.5        │ virginica    
+│
+│ 146 │ 6.7         │ 3.0        │ 5.2         │ 2.3        │ virginica    
+│
+│ 147 │ 6.3         │ 2.5        │ 5.0         │ 1.9        │ virginica    
+│
+│ 148 │ 6.5         │ 3.0        │ 5.2         │ 2.0        │ virginica    
+│
+│ 149 │ 6.2         │ 3.4        │ 5.4         │ 2.3        │ virginica    
+│
+│ 150 │ 5.9         │ 3.0        │ 5.1         │ 1.8        │ virginica    
+│
+````
+
+
 
 
 	
@@ -57,6 +99,24 @@ let's create a numeric vector and a string vector of the same length, and then p
 y = rand(10)
 cnd = [["a" for i=1:5]; ["b" for i=1:5]]
 resFrame =  DataFrame(y=y, cnd=cnd)
+````
+
+
+````
+10×2 DataFrames.DataFrame
+│ Row │ y         │ cnd    │
+│     │ Float64   │ String │
+├─────┼───────────┼────────┤
+│ 1   │ 0.561714  │ a      │
+│ 2   │ 0.803428  │ a      │
+│ 3   │ 0.0361527 │ a      │
+│ 4   │ 0.519811  │ a      │
+│ 5   │ 0.606916  │ a      │
+│ 6   │ 0.97625   │ b      │
+│ 7   │ 0.746947  │ b      │
+│ 8   │ 0.80258   │ b      │
+│ 9   │ 0.6336    │ b      │
+│ 10  │ 0.937197  │ b      │
 ````
 
 
@@ -113,16 +173,16 @@ resFrame[Symbol("y")]
 
 ````
 10-element Array{Float64,1}:
- 0.3440663425278374 
- 0.6633689409658656 
- 0.9647833314009491 
- 0.14813589246608672
- 0.9882249595675341 
- 0.3347175249264094 
- 0.8183121928315318 
- 0.8289771215415789 
- 0.6140523825767787 
- 0.20775408046859978
+ 0.5617144748285359 
+ 0.8034277924778275 
+ 0.03615270719339625
+ 0.5198107428796808 
+ 0.6069162251599283 
+ 0.9762498700794242 
+ 0.7469469019866541 
+ 0.8025796159779506 
+ 0.6336003103912686 
+ 0.9371973546911032
 ````
 
 
@@ -138,16 +198,16 @@ resFrame[1]
 
 ````
 10-element Array{Float64,1}:
- 0.3440663425278374 
- 0.6633689409658656 
- 0.9647833314009491 
- 0.14813589246608672
- 0.9882249595675341 
- 0.3347175249264094 
- 0.8183121928315318 
- 0.8289771215415789 
- 0.6140523825767787 
- 0.20775408046859978
+ 0.5617144748285359 
+ 0.8034277924778275 
+ 0.03615270719339625
+ 0.5198107428796808 
+ 0.6069162251599283 
+ 0.9762498700794242 
+ 0.7469469019866541 
+ 0.8025796159779506 
+ 0.6336003103912686 
+ 0.9371973546911032
 ````
 
 
@@ -196,8 +256,25 @@ first(iris, 4)
 ````
 
 
+````
+4×5 DataFrames.DataFrame
+│ Row │ SepalLength │ SepalWidth │ PetalLength │ PetalWidth │ Species      
+│
+│     │ Float64     │ Float64    │ Float64     │ Float64    │ Categorical… 
+│
+├─────┼─────────────┼────────────┼─────────────┼────────────┼──────────────
+┤
+│ 1   │ 5.1         │ 3.5        │ 1.4         │ 0.2        │ setosa       
+│
+│ 2   │ 4.9         │ 3.0        │ 1.4         │ 0.2        │ setosa       
+│
+│ 3   │ 4.7         │ 3.2        │ 1.3         │ 0.2        │ setosa       
+│
+│ 4   │ 4.6         │ 3.1        │ 1.5         │ 0.2        │ setosa       
+│
+````
 
-<table class="data-frame"><thead><tr><th></th><th>SepalLength</th><th>SepalWidth</th><th>PetalLength</th><th>PetalWidth</th><th>Species</th></tr><tr><th></th><th>Float64</th><th>Float64</th><th>Float64</th><th>Float64</th><th>Categorical…</th></tr></thead><tbody><p>4 rows × 5 columns</p><tr><th>1</th><td>5.1</td><td>3.5</td><td>1.4</td><td>0.2</td><td>setosa</td></tr><tr><th>2</th><td>4.9</td><td>3.0</td><td>1.4</td><td>0.2</td><td>setosa</td></tr><tr><th>3</th><td>4.7</td><td>3.2</td><td>1.3</td><td>0.2</td><td>setosa</td></tr><tr><th>4</th><td>4.6</td><td>3.1</td><td>1.5</td><td>0.2</td><td>setosa</td></tr></tbody></table>
+
 
 
 
@@ -208,8 +285,25 @@ last(iris, 4)
 ````
 
 
+````
+4×5 DataFrames.DataFrame
+│ Row │ SepalLength │ SepalWidth │ PetalLength │ PetalWidth │ Species      
+│
+│     │ Float64     │ Float64    │ Float64     │ Float64    │ Categorical… 
+│
+├─────┼─────────────┼────────────┼─────────────┼────────────┼──────────────
+┤
+│ 1   │ 6.3         │ 2.5        │ 5.0         │ 1.9        │ virginica    
+│
+│ 2   │ 6.5         │ 3.0        │ 5.2         │ 2.0        │ virginica    
+│
+│ 3   │ 6.2         │ 3.4        │ 5.4         │ 2.3        │ virginica    
+│
+│ 4   │ 5.9         │ 3.0        │ 5.1         │ 1.8        │ virginica    
+│
+````
 
-<table class="data-frame"><thead><tr><th></th><th>SepalLength</th><th>SepalWidth</th><th>PetalLength</th><th>PetalWidth</th><th>Species</th></tr><tr><th></th><th>Float64</th><th>Float64</th><th>Float64</th><th>Float64</th><th>Categorical…</th></tr></thead><tbody><p>4 rows × 5 columns</p><tr><th>1</th><td>6.3</td><td>2.5</td><td>5.0</td><td>1.9</td><td>virginica</td></tr><tr><th>2</th><td>6.5</td><td>3.0</td><td>5.2</td><td>2.0</td><td>virginica</td></tr><tr><th>3</th><td>6.2</td><td>3.4</td><td>5.4</td><td>2.3</td><td>virginica</td></tr><tr><th>4</th><td>5.9</td><td>3.0</td><td>5.1</td><td>1.8</td><td>virginica</td></tr></tbody></table>
+
 
 
 
@@ -270,8 +364,43 @@ iris[(iris[:Species] .== "setosa") .& (iris[:PetalLength] .> 1.5), :]
 ````
 
 
+````
+13×5 DataFrames.DataFrame
+│ Row │ SepalLength │ SepalWidth │ PetalLength │ PetalWidth │ Species      
+│
+│     │ Float64     │ Float64    │ Float64     │ Float64    │ Categorical… 
+│
+├─────┼─────────────┼────────────┼─────────────┼────────────┼──────────────
+┤
+│ 1   │ 5.4         │ 3.9        │ 1.7         │ 0.4        │ setosa       
+│
+│ 2   │ 4.8         │ 3.4        │ 1.6         │ 0.2        │ setosa       
+│
+│ 3   │ 5.7         │ 3.8        │ 1.7         │ 0.3        │ setosa       
+│
+│ 4   │ 5.4         │ 3.4        │ 1.7         │ 0.2        │ setosa       
+│
+│ 5   │ 5.1         │ 3.3        │ 1.7         │ 0.5        │ setosa       
+│
+│ 6   │ 4.8         │ 3.4        │ 1.9         │ 0.2        │ setosa       
+│
+│ 7   │ 5.0         │ 3.0        │ 1.6         │ 0.2        │ setosa       
+│
+│ 8   │ 5.0         │ 3.4        │ 1.6         │ 0.4        │ setosa       
+│
+│ 9   │ 4.7         │ 3.2        │ 1.6         │ 0.2        │ setosa       
+│
+│ 10  │ 4.8         │ 3.1        │ 1.6         │ 0.2        │ setosa       
+│
+│ 11  │ 5.0         │ 3.5        │ 1.6         │ 0.6        │ setosa       
+│
+│ 12  │ 5.1         │ 3.8        │ 1.9         │ 0.4        │ setosa       
+│
+│ 13  │ 5.1         │ 3.8        │ 1.6         │ 0.2        │ setosa       
+│
+````
 
-<table class="data-frame"><thead><tr><th></th><th>SepalLength</th><th>SepalWidth</th><th>PetalLength</th><th>PetalWidth</th><th>Species</th></tr><tr><th></th><th>Float64</th><th>Float64</th><th>Float64</th><th>Float64</th><th>Categorical…</th></tr></thead><tbody><p>13 rows × 5 columns</p><tr><th>1</th><td>5.4</td><td>3.9</td><td>1.7</td><td>0.4</td><td>setosa</td></tr><tr><th>2</th><td>4.8</td><td>3.4</td><td>1.6</td><td>0.2</td><td>setosa</td></tr><tr><th>3</th><td>5.7</td><td>3.8</td><td>1.7</td><td>0.3</td><td>setosa</td></tr><tr><th>4</th><td>5.4</td><td>3.4</td><td>1.7</td><td>0.2</td><td>setosa</td></tr><tr><th>5</th><td>5.1</td><td>3.3</td><td>1.7</td><td>0.5</td><td>setosa</td></tr><tr><th>6</th><td>4.8</td><td>3.4</td><td>1.9</td><td>0.2</td><td>setosa</td></tr><tr><th>7</th><td>5.0</td><td>3.0</td><td>1.6</td><td>0.2</td><td>setosa</td></tr><tr><th>8</th><td>5.0</td><td>3.4</td><td>1.6</td><td>0.4</td><td>setosa</td></tr><tr><th>9</th><td>4.7</td><td>3.2</td><td>1.6</td><td>0.2</td><td>setosa</td></tr><tr><th>10</th><td>4.8</td><td>3.1</td><td>1.6</td><td>0.2</td><td>setosa</td></tr><tr><th>11</th><td>5.0</td><td>3.5</td><td>1.6</td><td>0.6</td><td>setosa</td></tr><tr><th>12</th><td>5.1</td><td>3.8</td><td>1.9</td><td>0.4</td><td>setosa</td></tr><tr><th>13</th><td>5.1</td><td>3.8</td><td>1.6</td><td>0.2</td><td>setosa</td></tr></tbody></table>
+
 
 
 
@@ -284,16 +413,91 @@ using DataFramesMeta
 ````
 
 
+````
+50×5 DataFrames.DataFrame
+│ Row │ SepalLength │ SepalWidth │ PetalLength │ PetalWidth │ Species      
+│
+│     │ Float64     │ Float64    │ Float64     │ Float64    │ Categorical… 
+│
+├─────┼─────────────┼────────────┼─────────────┼────────────┼──────────────
+┤
+│ 1   │ 5.1         │ 3.5        │ 1.4         │ 0.2        │ setosa       
+│
+│ 2   │ 4.9         │ 3.0        │ 1.4         │ 0.2        │ setosa       
+│
+│ 3   │ 4.7         │ 3.2        │ 1.3         │ 0.2        │ setosa       
+│
+│ 4   │ 4.6         │ 3.1        │ 1.5         │ 0.2        │ setosa       
+│
+│ 5   │ 5.0         │ 3.6        │ 1.4         │ 0.2        │ setosa       
+│
+│ 6   │ 5.4         │ 3.9        │ 1.7         │ 0.4        │ setosa       
+│
+│ 7   │ 4.6         │ 3.4        │ 1.4         │ 0.3        │ setosa       
+│
+⋮
+│ 43  │ 4.4         │ 3.2        │ 1.3         │ 0.2        │ setosa       
+│
+│ 44  │ 5.0         │ 3.5        │ 1.6         │ 0.6        │ setosa       
+│
+│ 45  │ 5.1         │ 3.8        │ 1.9         │ 0.4        │ setosa       
+│
+│ 46  │ 4.8         │ 3.0        │ 1.4         │ 0.3        │ setosa       
+│
+│ 47  │ 5.1         │ 3.8        │ 1.6         │ 0.2        │ setosa       
+│
+│ 48  │ 4.6         │ 3.2        │ 1.4         │ 0.2        │ setosa       
+│
+│ 49  │ 5.3         │ 3.7        │ 1.5         │ 0.2        │ setosa       
+│
+│ 50  │ 5.0         │ 3.3        │ 1.4         │ 0.2        │ setosa       
+│
+````
 
-<table class="data-frame"><thead><tr><th></th><th>SepalLength</th><th>SepalWidth</th><th>PetalLength</th><th>PetalWidth</th><th>Species</th></tr><tr><th></th><th>Float64</th><th>Float64</th><th>Float64</th><th>Float64</th><th>Categorical…</th></tr></thead><tbody><p>50 rows × 5 columns</p><tr><th>1</th><td>5.1</td><td>3.5</td><td>1.4</td><td>0.2</td><td>setosa</td></tr><tr><th>2</th><td>4.9</td><td>3.0</td><td>1.4</td><td>0.2</td><td>setosa</td></tr><tr><th>3</th><td>4.7</td><td>3.2</td><td>1.3</td><td>0.2</td><td>setosa</td></tr><tr><th>4</th><td>4.6</td><td>3.1</td><td>1.5</td><td>0.2</td><td>setosa</td></tr><tr><th>5</th><td>5.0</td><td>3.6</td><td>1.4</td><td>0.2</td><td>setosa</td></tr><tr><th>6</th><td>5.4</td><td>3.9</td><td>1.7</td><td>0.4</td><td>setosa</td></tr><tr><th>7</th><td>4.6</td><td>3.4</td><td>1.4</td><td>0.3</td><td>setosa</td></tr><tr><th>8</th><td>5.0</td><td>3.4</td><td>1.5</td><td>0.2</td><td>setosa</td></tr><tr><th>9</th><td>4.4</td><td>2.9</td><td>1.4</td><td>0.2</td><td>setosa</td></tr><tr><th>10</th><td>4.9</td><td>3.1</td><td>1.5</td><td>0.1</td><td>setosa</td></tr><tr><th>11</th><td>5.4</td><td>3.7</td><td>1.5</td><td>0.2</td><td>setosa</td></tr><tr><th>12</th><td>4.8</td><td>3.4</td><td>1.6</td><td>0.2</td><td>setosa</td></tr><tr><th>13</th><td>4.8</td><td>3.0</td><td>1.4</td><td>0.1</td><td>setosa</td></tr><tr><th>14</th><td>4.3</td><td>3.0</td><td>1.1</td><td>0.1</td><td>setosa</td></tr><tr><th>15</th><td>5.8</td><td>4.0</td><td>1.2</td><td>0.2</td><td>setosa</td></tr><tr><th>16</th><td>5.7</td><td>4.4</td><td>1.5</td><td>0.4</td><td>setosa</td></tr><tr><th>17</th><td>5.4</td><td>3.9</td><td>1.3</td><td>0.4</td><td>setosa</td></tr><tr><th>18</th><td>5.1</td><td>3.5</td><td>1.4</td><td>0.3</td><td>setosa</td></tr><tr><th>19</th><td>5.7</td><td>3.8</td><td>1.7</td><td>0.3</td><td>setosa</td></tr><tr><th>20</th><td>5.1</td><td>3.8</td><td>1.5</td><td>0.3</td><td>setosa</td></tr><tr><th>21</th><td>5.4</td><td>3.4</td><td>1.7</td><td>0.2</td><td>setosa</td></tr><tr><th>22</th><td>5.1</td><td>3.7</td><td>1.5</td><td>0.4</td><td>setosa</td></tr><tr><th>23</th><td>4.6</td><td>3.6</td><td>1.0</td><td>0.2</td><td>setosa</td></tr><tr><th>24</th><td>5.1</td><td>3.3</td><td>1.7</td><td>0.5</td><td>setosa</td></tr><tr><th>&vellip;</th><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td></tr></tbody></table>
+
 
 ````julia
 @where(iris, :Species .== "setosa", :PetalLength .> 1.5)
 ````
 
 
+````
+13×5 DataFrames.DataFrame
+│ Row │ SepalLength │ SepalWidth │ PetalLength │ PetalWidth │ Species      
+│
+│     │ Float64     │ Float64    │ Float64     │ Float64    │ Categorical… 
+│
+├─────┼─────────────┼────────────┼─────────────┼────────────┼──────────────
+┤
+│ 1   │ 5.4         │ 3.9        │ 1.7         │ 0.4        │ setosa       
+│
+│ 2   │ 4.8         │ 3.4        │ 1.6         │ 0.2        │ setosa       
+│
+│ 3   │ 5.7         │ 3.8        │ 1.7         │ 0.3        │ setosa       
+│
+│ 4   │ 5.4         │ 3.4        │ 1.7         │ 0.2        │ setosa       
+│
+│ 5   │ 5.1         │ 3.3        │ 1.7         │ 0.5        │ setosa       
+│
+│ 6   │ 4.8         │ 3.4        │ 1.9         │ 0.2        │ setosa       
+│
+│ 7   │ 5.0         │ 3.0        │ 1.6         │ 0.2        │ setosa       
+│
+│ 8   │ 5.0         │ 3.4        │ 1.6         │ 0.4        │ setosa       
+│
+│ 9   │ 4.7         │ 3.2        │ 1.6         │ 0.2        │ setosa       
+│
+│ 10  │ 4.8         │ 3.1        │ 1.6         │ 0.2        │ setosa       
+│
+│ 11  │ 5.0         │ 3.5        │ 1.6         │ 0.6        │ setosa       
+│
+│ 12  │ 5.1         │ 3.8        │ 1.9         │ 0.4        │ setosa       
+│
+│ 13  │ 5.1         │ 3.8        │ 1.6         │ 0.2        │ setosa       
+│
+````
 
-<table class="data-frame"><thead><tr><th></th><th>SepalLength</th><th>SepalWidth</th><th>PetalLength</th><th>PetalWidth</th><th>Species</th></tr><tr><th></th><th>Float64</th><th>Float64</th><th>Float64</th><th>Float64</th><th>Categorical…</th></tr></thead><tbody><p>13 rows × 5 columns</p><tr><th>1</th><td>5.4</td><td>3.9</td><td>1.7</td><td>0.4</td><td>setosa</td></tr><tr><th>2</th><td>4.8</td><td>3.4</td><td>1.6</td><td>0.2</td><td>setosa</td></tr><tr><th>3</th><td>5.7</td><td>3.8</td><td>1.7</td><td>0.3</td><td>setosa</td></tr><tr><th>4</th><td>5.4</td><td>3.4</td><td>1.7</td><td>0.2</td><td>setosa</td></tr><tr><th>5</th><td>5.1</td><td>3.3</td><td>1.7</td><td>0.5</td><td>setosa</td></tr><tr><th>6</th><td>4.8</td><td>3.4</td><td>1.9</td><td>0.2</td><td>setosa</td></tr><tr><th>7</th><td>5.0</td><td>3.0</td><td>1.6</td><td>0.2</td><td>setosa</td></tr><tr><th>8</th><td>5.0</td><td>3.4</td><td>1.6</td><td>0.4</td><td>setosa</td></tr><tr><th>9</th><td>4.7</td><td>3.2</td><td>1.6</td><td>0.2</td><td>setosa</td></tr><tr><th>10</th><td>4.8</td><td>3.1</td><td>1.6</td><td>0.2</td><td>setosa</td></tr><tr><th>11</th><td>5.0</td><td>3.5</td><td>1.6</td><td>0.6</td><td>setosa</td></tr><tr><th>12</th><td>5.1</td><td>3.8</td><td>1.9</td><td>0.4</td><td>setosa</td></tr><tr><th>13</th><td>5.1</td><td>3.8</td><td>1.6</td><td>0.2</td><td>setosa</td></tr></tbody></table>
+
 
 
 
@@ -308,6 +512,17 @@ summIris = by(iris, [:Species], df -> DataFrame(meanPetalWidth=mean(df[:PetalWid
 ````
 
 
+````
+3×2 DataFrames.DataFrame
+│ Row │ Species      │ meanPetalWidth │
+│     │ Categorical… │ Float64        │
+├─────┼──────────────┼────────────────┤
+│ 1   │ setosa       │ 0.246          │
+│ 2   │ versicolor   │ 1.326          │
+│ 3   │ virginica    │ 2.026          │
+````
+
+
 
 
 	
@@ -315,6 +530,17 @@ using the macros in `DataFramesMeta` is much better
 
 ````julia
 summIris = @linq iris |> groupby(:Species) |> based_on(x = mean(:PetalWidth))
+````
+
+
+````
+3×2 DataFrames.DataFrame
+│ Row │ Species      │ x       │
+│     │ Categorical… │ Float64 │
+├─────┼──────────────┼─────────┤
+│ 1   │ setosa       │ 0.246   │
+│ 2   │ versicolor   │ 1.326   │
+│ 3   │ virginica    │ 2.026   │
 ````
 
 
@@ -328,8 +554,17 @@ there are slightly different ways of achieving the same result:
 ````
 
 
+````
+3×2 DataFrames.DataFrame
+│ Row │ Species      │ x       │
+│     │ Categorical… │ Float64 │
+├─────┼──────────────┼─────────┤
+│ 1   │ setosa       │ 3.428   │
+│ 2   │ versicolor   │ 2.77    │
+│ 3   │ virginica    │ 2.974   │
+````
 
-<table class="data-frame"><thead><tr><th></th><th>Species</th><th>x</th></tr><tr><th></th><th>Categorical…</th><th>Float64</th></tr></thead><tbody><p>3 rows × 2 columns</p><tr><th>1</th><td>setosa</td><td>3.428</td></tr><tr><th>2</th><td>versicolor</td><td>2.77</td></tr><tr><th>3</th><td>virginica</td><td>2.974</td></tr></tbody></table>
+
 
 
 	  	
@@ -340,5 +575,14 @@ or:
 ````
 
 
+````
+3×2 DataFrames.DataFrame
+│ Row │ Species      │ x       │
+│     │ Categorical… │ Float64 │
+├─────┼──────────────┼─────────┤
+│ 1   │ setosa       │ 0.246   │
+│ 2   │ versicolor   │ 1.326   │
+│ 3   │ virginica    │ 2.026   │
+````
 
-<table class="data-frame"><thead><tr><th></th><th>Species</th><th>x</th></tr><tr><th></th><th>Categorical…</th><th>Float64</th></tr></thead><tbody><p>3 rows × 2 columns</p><tr><th>1</th><td>setosa</td><td>0.246</td></tr><tr><th>2</th><td>versicolor</td><td>1.326</td></tr><tr><th>3</th><td>virginica</td><td>2.026</td></tr></tbody></table>
+
