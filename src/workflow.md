@@ -2,7 +2,7 @@
 
 ### Environment customization
 
-You can customize your Julia environment by inserting code in the `startup.jl` file located in `~.julia/conifg/` (create both the directory tree and the file if they don't yet exist in your system), which is run each time Julia starts up. You could use this to load packages that you use frequently, define functions or set variables that you use often in your interactive sessions. Below is an example of a `startup.jl` file:
+You can customize your Julia environment by inserting code in the `startup.jl` file located in `~.julia/config/` (create both the directory tree and the file if they don't yet exist in your system), which is run each time Julia starts up. You could use this to load packages that you use frequently, define functions or set variables that you use often in your interactive sessions. Below is an example of a `startup.jl` file:
 
 ````julia
 
