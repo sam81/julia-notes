@@ -1,5 +1,9 @@
 ##Vegalite
 
+[VegaLite.jl](https://github.com/fredo-dedup/VegaLite.jl) is a plotting package for Julia based on [Vega-Lite](https://vega.github.io/vega-lite/). Its two most notable features are that 1) it is based on a grammar of graphics, like the `ggplot2` R package; 2) it produces interactive html graphics (but they can also be saved on disk in other static formats such as pdf or png).
+
+Using Vegalite.jl feels a lot like using ggplot2, so users of ggplot2 in R will feel right at home.
+
 ````julia
 using VegaLite, RDatasets
 iris = dataset("datasets", "iris")
@@ -18,4 +22,61 @@ save("../src/figures/iris_sep_wd_by_len.png", p)
 
 
 
+Note that you may need to either call `p` or `p |> display` to show the plot. Depending on wheter you're using the terminal or a IDE the plot may open up in a browser window. The [ElectronDisplay.jl](https://github.com/queryverse/ElectronDisplay.jl) package provides a convenient plotting window that can show VegaLite plots.
+
 ![](figures/iris_sep_wd_by_len.png)
+
+
+Currently by the default when you hover with the mouse on the points nothing happens, but you can enable tooltips as follows:
+
+````julia
+
+p = iris |> @vlplot(:point,
+                    x=:SepalLength,
+                    y=:SepalWidth,
+                    color=:Species,
+                    width=400,
+                    height=400,
+                    tooltip=[{field="SepalLength"}, {field="SepalWidth"}]
+                    );
+````
+
+
+
+
+Do not start axis from zero:
+
+````julia
+p = iris |> @vlplot(:point,
+                           x={"SepalLength", scale={zero=false}},
+                           y=:SepalWidth,
+                           color=:Species,
+                           width=400,
+                           height=400,
+                           tooltip=[{field="SepalLength"}, {field="SepalWidth"}]
+                           );
+````
+
+
+
+
+
+### Faceting
+
+````julia
+oats = dataset("MASS", "oats")
+oats[:Nitro] = [parse(Float64, split(oats[:N][i], "c")[1]) for i=1:length(oats[:N])]
+
+p = oats |> @vlplot(:point,
+                    x=:Nitro,
+                    y=:Y,
+                    row=:B,
+                    column=:V)
+save("../src/figures/vegalite_oats.png", p)
+````
+
+
+
+
+
+![](figures/vegalite_oats.png)

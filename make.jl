@@ -8,8 +8,15 @@ if ispath("site/")
     rm("site/", recursive=true)
 end
 
-fls = ["dataframes.Rmd", "datatypes.Rmd", "index.Rmd",
-       "parallel_processing.Rmd", "gadfly.Rmd", "vegalite.Rmd", "ggplot2.Rmd", "random.Rmd", "workflow.Rmd"]
+fls = ["creating_packages.Rmd",
+       "installing_packages.Rmd",
+       "dataframes.Rmd", "datatypes.Rmd",
+       "gadfly.Rmd", "ggplot2.Rmd",
+       "index.Rmd",
+       "parallel_processing.Rmd", 
+       "random.Rmd",
+       "sound.Rmd", "simple_intro.Rmd",
+       "vegalite.Rmd", "workflow.Rmd"]
 
 
 cd("raw_docs")
