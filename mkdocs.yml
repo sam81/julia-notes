@@ -1,6 +1,7 @@
 site_name: Julia Notes
 site_author: Samuele Carcagno
 theme: readthedocs
+#theme_dir: mkdocs_bootstrap
 repo_url: https://github.com/sam81/julia-notes
 
 extra_css:
@@ -28,6 +29,7 @@ pages:
     - DataFrames: 'dataframes.md'
     - Random Numbers and Sampling: 'random.md'
     - Parallel Processing: 'parallel_processing.md'
+    - Graphics - PlotlyJS: 'plotlyJS.md'
     - Graphics - Gadfly: 'gadfly.md'
     - Graphics - VegaLite: 'vegalite.md'
     - Graphics - PyPlot: 'pyplot.md'

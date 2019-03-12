@@ -8,7 +8,7 @@ rand()
 
 
 ````
-0.4930205054595769
+0.22432612897769766
 ````
 
 
@@ -23,7 +23,7 @@ rand(1:100)
 
 
 ````
-33
+59
 ````
 
 
@@ -39,7 +39,7 @@ rand(lettersSeq)
 
 
 ````
-"a"
+"b"
 ````
 
 
@@ -58,10 +58,56 @@ rand(1:100, 2, 5) #generate a 2x5 matrix of
 
 
 
+
+note that sampling is done with replacement:
+````julia
+rand(["a", "b", "c", "d"], 4)
+rand(["a", "b", "c", "d"], 10)
+````
+
+
+````
+10-element Array{String,1}:
+ "d"
+ "a"
+ "d"
+ "a"
+ "a"
+ "b"
+ "d"
+ "c"
+ "b"
+ "b"
+````
+
+
+
+
+
+the [StatsBase.jl](https://github.com/JuliaStats/StatsBase.jl) package provides convenient functions to sample with or without replacement. For example, to sample without replacement:
+
+````julia
+using StatsBase
+sample(["a", "b", "c", "d"], 4, replace=false)
+````
+
+
+````
+4-element Array{String,1}:
+ "d"
+ "a"
+ "c"
+ "b"
+````
+
+
+
+
+
 	
 ### Setting the random seed
 
-It is sometimes desirable that a call to a random number generator actually generates the same "random" sequence each time it is called at a specific point in a script (e.g. to make an example reproducible). To achieve this it is necessary to explicitly initialize the random number generator with a ["seed"](https://en.wikipedia.org/wiki/Random_seed). In julia this can be done with the `srand` function in the standard library package `Random`:
+It is sometimes desirable that a call to a random number generator actually generates the same "random" sequence each time it is called at a specific point in a script (e.g. to make an example reproducible). To achieve this it is necessary to explicitly initialize the random number generator with a ["seed"](https://en.wikipedia.org/wiki/Random_seed). In julia this can be done with the `Random.seed!` function in the standard library package `Random`:
    
 ````julia
 
