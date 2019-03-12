@@ -16,11 +16,13 @@ markdown_extensions:
   - extra
   - tables
   - fenced_code
+  - admonition
   
 pages:
     - Introduction: 'index.md'
     - Simple intro: 'simple_intro.md'
     - Data Types: 'datatypes.md'
+    - Mutable and immutable objects: 'mutable_immutable.md'
     - Installing packages: 'installing_packages.md'
     - Creating packages: 'creating_packages.md'
     - DataFrames: 'dataframes.md'
