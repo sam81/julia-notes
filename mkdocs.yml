@@ -1,7 +1,6 @@
 site_name: Julia Notes
 site_author: Samuele Carcagno
 theme: readthedocs
-#theme_dir: mkdocs_bootstrap
 repo_url: https://github.com/sam81/julia-notes
 
 extra_css:
