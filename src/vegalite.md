@@ -2,7 +2,7 @@
 
 [VegaLite.jl](https://github.com/fredo-dedup/VegaLite.jl) is a plotting package for Julia based on [Vega-Lite](https://vega.github.io/vega-lite/). Its two most notable features are that 1) it is based on a grammar of graphics, like the `ggplot2` R package; 2) it produces interactive html graphics (but they can also be saved on disk in other static formats such as pdf or png).
 
-Using Vegalite.jl feels a lot like using ggplot2, so users of ggplot2 in R will feel right at home.
+Using Vegalite.jl feels a lot like using `ggplot2`, so users of `ggplot2` in R will feel right at home.
 
 ````julia
 using VegaLite, RDatasets
@@ -27,7 +27,7 @@ Note that you may need to either call `p` or `p |> display` to show the plot. De
 ![](figures/iris_sep_wd_by_len.png)
 
 
-Currently by the default when you hover with the mouse on the points nothing happens, but you can enable tooltips as follows:
+Now that we have this first plot, let's do a few tweaks it to improve its appearance. Currently by the default when you hover with the mouse on the points nothing happens, but you can enable tooltips as follows:
 
 ````julia
 
@@ -44,18 +44,65 @@ p = iris |> @vlplot(:point,
 
 
 
-Do not start axis from zero:
+By default, the axes start from zero. If you do not want the axes to start from zero you need to specify this as follows:
 
 ````julia
 p = iris |> @vlplot(:point,
-                           x={"SepalLength", scale={zero=false}},
-                           y=:SepalWidth,
+                           x={:SepalLength, scale={zero=false}},
+                           y={:SepalWidth, scale={zero=false}},
                            color=:Species,
                            width=400,
                            height=400,
                            tooltip=[{field="SepalLength"}, {field="SepalWidth"}]
                            );
 ````
+
+
+
+
+
+We can add prettier labels to the x and y axis as follows:
+
+````julia
+p = iris |> @vlplot(:point,
+                           x={:SepalLength, 
+                              scale={zero=false},
+                              axis={title="Sepal Length (cm)"}},
+                           y={:SepalWidth, 
+                              scale={zero=false},
+                              axis={title="Sepal Width (cm)"}},
+                           color=:Species,
+                           width=400,
+                           height=400,
+                           tooltip=[{field="SepalLength"}, {field="SepalWidth"}]
+                           );
+````
+
+
+
+
+
+We can remove the grid as well:
+
+````julia
+p = iris |> @vlplot(:point,
+                           x={:SepalLength, 
+                              scale={zero=false},
+                              axis={title="Sepal Length (cm)",
+                                    grid=false}
+                             },
+                           y={:SepalWidth, 
+                              scale={zero=false},
+                              axis={title="Sepal Width (cm)",
+                              grid=false}
+                             },
+                           color=:Species,
+                           width=400,
+                           height=400,
+                           tooltip=[{field="SepalLength"}, {field="SepalWidth"}]
+                           );
+````
+
 
 
 

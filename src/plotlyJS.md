@@ -35,7 +35,15 @@ savefig(p, "../src/figures/plotly_line_plot.png")
 
 
 ````
-"../src/figures/plotly_line_plot.png"
+Error: MethodError: savefig(::PlotlyJS.SyncPlot, ::String) is ambiguous. Ca
+ndidates:
+  savefig(p::Union{PlotlyJS.SyncPlot, PlotlyBase.Plot}, fn::AbstractString,
+ args...) in PlotlyJS at /home/sam/.julia/packages/PlotlyJS/AhkM5/src/Plotl
+yJS.jl:49
+  savefig(p::PlotlyJS.SyncPlot, a...) in PlotlyJS at /home/sam/.julia/packa
+ges/PlotlyJS/AhkM5/src/savefig_orca.jl:1
+Possible fix, define
+  savefig(::PlotlyJS.SyncPlot, ::AbstractString, ::Vararg{Any,N} where N)
 ````
 
 
@@ -54,7 +62,15 @@ savefig(p, "../src/figures/plotly_scatter_plot.png")
 
 
 ````
-"../src/figures/plotly_scatter_plot.png"
+Error: MethodError: savefig(::PlotlyJS.SyncPlot, ::String) is ambiguous. Ca
+ndidates:
+  savefig(p::Union{PlotlyJS.SyncPlot, PlotlyBase.Plot}, fn::AbstractString,
+ args...) in PlotlyJS at /home/sam/.julia/packages/PlotlyJS/AhkM5/src/Plotl
+yJS.jl:49
+  savefig(p::PlotlyJS.SyncPlot, a...) in PlotlyJS at /home/sam/.julia/packa
+ges/PlotlyJS/AhkM5/src/savefig_orca.jl:1
+Possible fix, define
+  savefig(::PlotlyJS.SyncPlot, ::AbstractString, ::Vararg{Any,N} where N)
 ````
 
 
@@ -75,7 +91,15 @@ savefig(p, "../src/figures/plotly_line_plot2.png")
 
 
 ````
-"../src/figures/plotly_line_plot2.png"
+Error: MethodError: savefig(::PlotlyJS.SyncPlot, ::String) is ambiguous. Ca
+ndidates:
+  savefig(p::Union{PlotlyJS.SyncPlot, PlotlyBase.Plot}, fn::AbstractString,
+ args...) in PlotlyJS at /home/sam/.julia/packages/PlotlyJS/AhkM5/src/Plotl
+yJS.jl:49
+  savefig(p::PlotlyJS.SyncPlot, a...) in PlotlyJS at /home/sam/.julia/packa
+ges/PlotlyJS/AhkM5/src/savefig_orca.jl:1
+Possible fix, define
+  savefig(::PlotlyJS.SyncPlot, ::AbstractString, ::Vararg{Any,N} where N)
 ````
 
 
@@ -95,7 +119,15 @@ savefig(p, "../src/figures/plotly_line_plot_2_traces.png")
 
 
 ````
-"../src/figures/plotly_line_plot_2_traces.png"
+Error: MethodError: savefig(::PlotlyJS.SyncPlot, ::String) is ambiguous. Ca
+ndidates:
+  savefig(p::Union{PlotlyJS.SyncPlot, PlotlyBase.Plot}, fn::AbstractString,
+ args...) in PlotlyJS at /home/sam/.julia/packages/PlotlyJS/AhkM5/src/Plotl
+yJS.jl:49
+  savefig(p::PlotlyJS.SyncPlot, a...) in PlotlyJS at /home/sam/.julia/packa
+ges/PlotlyJS/AhkM5/src/savefig_orca.jl:1
+Possible fix, define
+  savefig(::PlotlyJS.SyncPlot, ::AbstractString, ::Vararg{Any,N} where N)
 ````
 
 

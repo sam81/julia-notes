@@ -42,8 +42,8 @@ resFrame =  DataFrame(y=y, cnd=cnd)
 to access the columns of a dataframe use the following syntax:
 
 ```{julia}
-resFrame[:y] #retrieves the column named `y`
-resFrame[:cnd] #retrieves the column named `cnd`
+resFrame[!,:y] #retrieves the column named `y`
+resFrame[!,:cnd] #retrieves the column named `cnd`
 ```
 
 note that `:y` or `:cnd` are *Symbols*:
@@ -55,13 +55,13 @@ typeof(:y)
 sometimes it is necessary to access the column of a dataframe using a string. You can do so by converting a string to a symbol:
 
 ```{julia}
-resFrame[Symbol("y")]
+resFrame[!,Symbol("y")]
 ```
 
 you can also retrieve a column by its column number
 
 ```{julia}
-resFrame[1]
+resFrame[!,1]
 ```
 
 to write a dataframe to a text of CSV file, use:
@@ -76,6 +76,12 @@ single ticks `''`:
 ```{julia}
 CSV.write("dataframe.csv", resFrame, delim=';')
 ```
+
+To read a dataframe from a text file, use:
+```{julia}
+dat = CSV.read("dataframe.csv", delim=';')
+```
+
 
 ### Displaying data on screen
 
@@ -111,7 +117,7 @@ the following command returns a boolean vector indicating whether
 each element in the `Species` column of the iris datasets is "setosa" or not:
 
 ```{julia; eval=true}
-idx = iris[:Species] .== "setosa";
+idx = iris[!,:Species] .== "setosa";
 ```
 
 we can use this vector to select the corresponding rows of the dataframe:
@@ -123,14 +129,14 @@ iris[idx, :];
 or more succintly we could achieve the same result with a single command:
    
 ```{julia; eval=true}
-iris[(iris[:Species] .== "setosa"), :];
+iris[(iris[!,:Species] .== "setosa"), :];
 ```
 
 we can also setect rows on the basis of multiple conditions, for example
 only the ones for the setosa specimens with a petal length greater than 1.5:
      	
 ```{julia; eval=true}
-iris[(iris[:Species] .== "setosa") .& (iris[:PetalLength] .> 1.5), :]	    
+iris[(iris[!,:Species] .== "setosa") .& (iris[!,:PetalLength] .> 1.5), :]	    
 ```
 
 The `DataFramesMeta` package also provides convenient functions for selecting rows
@@ -152,7 +158,7 @@ somwhat verbose:
 	    
 ```{julia; eval=true}
 using Statistics	
-summIris = by(iris, [:Species], df -> DataFrame(meanPetalWidth=mean(df[:PetalWidth])))
+summIris = by(iris, [:Species], df -> DataFrame(meanPetalWidth=mean(df[!,:PetalWidth])))
 ```
 	
 using the macros in `DataFramesMeta` is much better

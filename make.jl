@@ -26,6 +26,8 @@ for fl in fls
     println("Weaving "*fl)
     weave(fl, informat="markdown",
           out_path = "../src/", doctype = "github")
+    tangle(fl, informat="markdown",
+           out_path = "../tangled/")
 end
 
 

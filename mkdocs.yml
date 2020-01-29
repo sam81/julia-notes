@@ -18,7 +18,7 @@ markdown_extensions:
   - fenced_code
   - admonition
   
-pages:
+nav:
     - Introduction: 'index.md'
     - Simple intro: 'simple_intro.md'
     - Data Types: 'datatypes.md'

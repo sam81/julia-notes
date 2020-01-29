@@ -107,16 +107,16 @@ resFrame =  DataFrame(y=y, cnd=cnd)
 │ Row │ y        │ cnd    │
 │     │ Float64  │ String │
 ├─────┼──────────┼────────┤
-│ 1   │ 0.798255 │ a      │
-│ 2   │ 0.743002 │ a      │
-│ 3   │ 0.605029 │ a      │
-│ 4   │ 0.836391 │ a      │
-│ 5   │ 0.781434 │ a      │
-│ 6   │ 0.916998 │ b      │
-│ 7   │ 0.918692 │ b      │
-│ 8   │ 0.069181 │ b      │
-│ 9   │ 0.307509 │ b      │
-│ 10  │ 0.521005 │ b      │
+│ 1   │ 0.456118 │ a      │
+│ 2   │ 0.258672 │ a      │
+│ 3   │ 0.224384 │ a      │
+│ 4   │ 0.265235 │ a      │
+│ 5   │ 0.392812 │ a      │
+│ 6   │ 0.457032 │ b      │
+│ 7   │ 0.457212 │ b      │
+│ 8   │ 0.292523 │ b      │
+│ 9   │ 0.2354   │ b      │
+│ 10  │ 0.937949 │ b      │
 ````
 
 
@@ -126,8 +126,8 @@ resFrame =  DataFrame(y=y, cnd=cnd)
 to access the columns of a dataframe use the following syntax:
 
 ````julia
-resFrame[:y] #retrieves the column named `y`
-resFrame[:cnd] #retrieves the column named `cnd`
+resFrame[!,:y] #retrieves the column named `y`
+resFrame[!,:cnd] #retrieves the column named `cnd`
 ````
 
 
@@ -167,22 +167,22 @@ Symbol
 sometimes it is necessary to access the column of a dataframe using a string. You can do so by converting a string to a symbol:
 
 ````julia
-resFrame[Symbol("y")]
+resFrame[!,Symbol("y")]
 ````
 
 
 ````
 10-element Array{Float64,1}:
- 0.7982550424005497 
- 0.7430021793971349 
- 0.6050288351526465 
- 0.8363908647446228 
- 0.7814342475326077 
- 0.916998413409603  
- 0.9186915887423095 
- 0.06918101308696456
- 0.30750855085360507
- 0.5210054449452448
+ 0.45611823011188046
+ 0.25867186596047786
+ 0.22438418980589425
+ 0.26523483325867425
+ 0.39281191485608846
+ 0.457032183056046  
+ 0.4572123392646825 
+ 0.2925232205194841 
+ 0.23539958134759575
+ 0.9379494137157403
 ````
 
 
@@ -198,16 +198,16 @@ resFrame[1]
 
 ````
 10-element Array{Float64,1}:
- 0.7982550424005497 
- 0.7430021793971349 
- 0.6050288351526465 
- 0.8363908647446228 
- 0.7814342475326077 
- 0.916998413409603  
- 0.9186915887423095 
- 0.06918101308696456
- 0.30750855085360507
- 0.5210054449452448
+ 0.45611823011188046
+ 0.25867186596047786
+ 0.22438418980589425
+ 0.26523483325867425
+ 0.39281191485608846
+ 0.457032183056046  
+ 0.4572123392646825 
+ 0.2925232205194841 
+ 0.23539958134759575
+ 0.9379494137157403
 ````
 
 
@@ -240,6 +240,34 @@ CSV.write("dataframe.csv", resFrame, delim=';')
 ````
 "dataframe.csv"
 ````
+
+
+
+
+
+To read a dataframe from a text file, use:
+````julia
+dat = CSV.read("dataframe.csv", delim=';')
+````
+
+
+````
+10×2 DataFrames.DataFrame
+│ Row │ y        │ cnd    │
+│     │ Float64  │ String │
+├─────┼──────────┼────────┤
+│ 1   │ 0.456118 │ a      │
+│ 2   │ 0.258672 │ a      │
+│ 3   │ 0.224384 │ a      │
+│ 4   │ 0.265235 │ a      │
+│ 5   │ 0.392812 │ a      │
+│ 6   │ 0.457032 │ b      │
+│ 7   │ 0.457212 │ b      │
+│ 8   │ 0.292523 │ b      │
+│ 9   │ 0.2354   │ b      │
+│ 10  │ 0.937949 │ b      │
+````
+
 
 
 
@@ -329,7 +357,7 @@ the following command returns a boolean vector indicating whether
 each element in the `Species` column of the iris datasets is "setosa" or not:
 
 ````julia
-idx = iris[:Species] .== "setosa";
+idx = iris[!,:Species] .== "setosa";
 ````
 
 
@@ -349,7 +377,7 @@ iris[idx, :];
 or more succintly we could achieve the same result with a single command:
    
 ````julia
-iris[(iris[:Species] .== "setosa"), :];
+iris[(iris[!,:Species] .== "setosa"), :];
 ````
 
 
@@ -360,7 +388,7 @@ we can also setect rows on the basis of multiple conditions, for example
 only the ones for the setosa specimens with a petal length greater than 1.5:
      	
 ````julia
-iris[(iris[:Species] .== "setosa") .& (iris[:PetalLength] .> 1.5), :]
+iris[(iris[!,:Species] .== "setosa") .& (iris[:PetalLength] .> 1.5), :]
 ````
 
 
