@@ -1,7 +1,7 @@
 # Mutable and immutable objects
 
-!!! warning
-    This topic can be somewhat mind-boggling! While I strive to write correct definitions and explanations, remember that these are simply my notes on using Julia, and I'm not an expert! So take my words and explanations with a grain of salt, 	and drop me an e-mail or fork these notes on github to fix them if you find errors.
+
+_Warning:_ This topic can be somewhat mind-boggling! While I strive to write correct definitions and explanations, remember that these are simply my notes on using Julia, and I'm not an expert! So take my words and explanations with a grain of salt, 	and drop me an e-mail or fork these notes on github to fix them if you find errors.
 	
 
 Objects in Julia can either be mutable or immutable, you can check whether
@@ -32,7 +32,7 @@ Immutable objects cannot be changed, while mutable objects can. Why is this impo
 a = 1
 ```
 
-then you bind another variable, `b` to `a`:
+then you bind another variable, `b`, to `a`:
 
 ```{julia}
 b = a
@@ -107,9 +107,9 @@ despite the fact that they have the same value:
 x==y
 ```
 
-All this may seem abstract and touching edge cases, but it has important consequences. One of these is that of you pass a mutable object to a function as an argument, and you modify that object inside the function the object will be modified even though you may not explicitly return it. For example, suppose that we write a function to sum two arrays, and in case the first array is longer than the second one we remove elements from it until their length matches:
+All this may seem abstract and, and may seem to be touching edge cases, but it has important consequences. One of these is that if you pass a mutable object to a function as an argument, and you modify that object inside the function, the object will be modified even though you may not explicitly return it. For example, suppose that we write a function to sum two arrays, and in case the first array is longer than the second one we remove elements from it until their length matches:
 
-```{julia}
+```{julia, results="hide"}
 function foo(x,y)
     while length(x) > length(y)
         pop!(x)
@@ -122,9 +122,9 @@ end
 note that the function does not explicitly return `x`, but will nontheless modify it. Now let's call the function with the following arguments:
 
 ```{julia}
-x = [1,1,1,1]
-y = [2,2]
-z = foo(x,y)
+x = [1,1,1,1];
+y = [2,2];
+z = foo(x, y)
 ```
 
 we get the value of `z` which we explicitly returned, but if we check what value now `x` has:
@@ -135,7 +135,7 @@ x
 
 we can see that it has been modified as well. This doesn't happen with immutable objects. Let's check it with another very contrived example:
 
-```{julia}
+```{julia, results="hide"}
 function foo(x,y)
     while x > y
         x = x-1
@@ -146,8 +146,8 @@ end
 ```
 
 ```{julia}
-x = 8; y=3
-foo(x,y)
+x = 8; y=3;
+foo(x, y)
 ```
 
 the function returns the expected value, and if we check what's the value of `x`:
@@ -158,13 +158,13 @@ x
 
 we can see that it has not changed. That's because `x` is bound to an immutable object in this case, and the variable `x` inside the function is in a different scope from the variable `x` outside the function.
 
-!!! warning
-    The moral of the story above is: Watch out when you pass mutable objects as function arguments!
+
+_Warning:_ The moral of the story above is: Watch out when you pass mutable objects as function arguments!
 	
-Another important side effect of the difference between mutable and immutable objects involves the local scope introduced by certain code blocks, such as for loops. Variables from the global scope are available for reading in the local scope, but not for writing. So for example the `x` in the for loop below will be bound to a new object in the local scope of the loop:
+Another important side effect of the difference between mutable and immutable objects involves the local scope introduced by certain code blocks, such as `for` loops. Variables from the global scope are available for reading in the local scope, but not for writing. So for example the `x` in the `for` loop below will be bound to a new object in the local scope of the loop:
 
 ```{julia}
-x = 0
+x = 0;
 for i=1:3
     x = i
     println(x)
@@ -180,7 +180,7 @@ x
 But if `x` is a mutable object, and we modify one of its elements inside the loop:
 
 ```{julia}
-x = [0,0,0]
+x = [0,0,0];
 for i=1:3
     x[2] = i
     println(x)

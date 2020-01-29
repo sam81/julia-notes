@@ -29,9 +29,9 @@ and use these variables for further operations, such as:
 x/3
 ```
 
-Of course Julia is much more than just a fancy calculator, and hopefully this tutorial (which is very much of a work in progress, and therefore very patchy) will give and idea of what you can do with Julia and how.
+Of course julia is much more than just a fancy calculator, and hopefully this tutorial (which is very much of a work in progress, and therefore very patchy) will give and idea of what you can do with julia and how.
 
-If you're new to Julia you should be aware that the basic installation only provides a limited set of core functions. Additional functionality is provided by addon packages which need to be installed and initialized in order to be used. More detailed info on installing and managing packages is available in [this section](installing_packages.md). For a quickstart, suppose that you want to compute the mean of a set of numbers. To do this you need to install the `StatsBase` package first, which provides statistical functions. You can do this with the following command:
+If you're new to julia you should be aware that the basic installation only provides a limited set of core functions. Additional functionality is provided by addon packages which need to be installed and initialized in order to be used. More detailed info on installing and managing packages is available in Section \@ref(packageManagement). For a quickstart, suppose that you want to compute the mean of a set of numbers. To do this you need to install the `StatsBase` package first, which provides statistical functions. You can do this with the following command:
 
 ```{julia, eval=FALSE}
 Pkg.install("StatsBase")
@@ -49,7 +49,7 @@ now you can use the `mean` function, for example:
 mean([1,2,3])
 ```
 
-Julia has taken a very modular approach splitting the core language functions from domain specific functions which are provided by add on packages. For example a base installation of Julia does not have built in plotting functionality. For this you need to install one of the plotting packages. An overview of some of these packages is provided in other sections of this document: [Gadfly](gadfly.md), [PyPlot](pyplot.md), [VegaLite](vegalite.md). You can also call R from Julia, and so you can indirectly use `ggoplot2` from Julia. This is illustrated in the [ggplot2](ggplot2.md) section.
+Julia has taken a very modular approach splitting the core language functions from domain specific functions which are provided by add on packages. For example a base installation of julia does not have built in plotting functionality. For this you need to install one of the plotting packages. An overview of some of these packages is provided in other sections of this document: [Gadfly](#gadfly), [PyPlot](#pyplot), [VegaLite](#vegalite). You can also call R from julia, and so you can indirectly use `ggoplot2` from julia. This is illustrated in the [ggplot2](#ggplot2) section.
 
 ## Getting help
 

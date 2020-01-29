@@ -1,11 +1,15 @@
-# PyPlot (matplotlib)
+# PyPlot (matplotlib) {#pyplot}
 
-```{julia}
+```{julia, results="hide"}
 using PyCall
 using PyPlot
-x = collect(0:0.1:2*pi);
-plot(x, sin.(x));
+x = collect(0:0.1:2*pi)
+plot(x, sin.(x))
+savefig("../Figures/pyplot_sine.png")
 ```
+
+![](../Figures/pyplot_sine.png)
+
 ### Saving multiple plots in one pdf with PyPlot
 
 ```{julia, results="hide"}

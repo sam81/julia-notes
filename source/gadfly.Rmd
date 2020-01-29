@@ -1,6 +1,6 @@
-# Gadfly
+# Gadfly {#gadfly}
 
-```{julia}
+```{julia, results="hide"}
 using Gadfly
 
 x = collect(0:0.1:2*pi)
@@ -8,7 +8,7 @@ plot(x=x, y=sin.(x), Geom.line,
      Guide.xlabel("Angle (radians)"), Guide.ylabel("Amplitude"));
 ```
 
-```{julia}
+```{julia, results="hide"}
 using RDatasets
 iris = dataset("datasets", "iris")
 plot(iris, x="SepalLength", y="SepalWidth", color="Species", Geom.point);
@@ -16,11 +16,11 @@ plot(iris, x="SepalLength", y="SepalWidth", color="Species", Geom.point);
 
 Facets:
 
-```{julia}
+```{julia, results="hide"}
 plot(iris, xgroup="Species", x="SepalLength", y="SepalWidth", Geom.subplot_grid(Geom.point));
 ```
 
-```{julia}
+```{julia, results="hide"}
 oats = dataset("MASS", "oats")
 oats[:Nitro] = [parse(Float64, split(oats[:N][i], "c")[1]) for i=1:length(oats[:N])]
 set_default_plot_size(16cm, 16cm)

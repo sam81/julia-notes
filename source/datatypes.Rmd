@@ -2,7 +2,7 @@
 
 ## A quick overview of the most common data types
 
-Julia has a sophisticated type system, and a variety of built-in data types and structures. If you're totally new to programming you may want to learn the basics of how numbers are represented in computers (e.g. learn the difference between integers and floating point numbers) because a basic knowledge of these topics will be very useful, if not essential when working with Julia. 
+Julia has a sophisticated type system, and a variety of built-in data types and structures. If you're totally new to programming you may want to learn the basics of how numbers are represented in computers (e.g. learn the difference between integers and floating point numbers) because a basic knowledge of these topics will be very useful, if not essential, when working with Julia. 
 
 You can check the type of an object with the `typeof` function. For example:
 
@@ -39,7 +39,7 @@ we can convert `z` above to an integer or a floating point number with the `pars
 parse(Int, z) #convert into an integer
 parse(Float64, z) #convert to a floating point number
 ```
-One of the most useful data structures are arrays. Arrays are containers that can contain objects of different types. We can initialize arrays of number with the `zeros` function:
+One of the most useful data structures are arrays. Arrays are containers that can contain objects of different types. We can initialize arrays of numbers with the `zeros` function:
 
 ```{julia}
 x = zeros(5)
@@ -77,15 +77,15 @@ including other arrays:
 x = [1, "a", 3.0, [1,2,3]]
 ```
 
-Dictionaries, consisting of key-value pairs constitute anothe very useful object. The key and the values can be of different types. For example:
+Dictionaries, consisting of key-value pairs, constitute anothe very useful object. The key and the values can be of different types. For example:
 
-```{julia}
+```{julia, results="hide"}
 myDict = Dict{String, Any}()
 ``` 
 
 will initialize a dictionary with a string key, and a value that can be of any type:
 
-```{julia}
+```{julia, results="hide"}
 myDict["a"] = 3
 myDict["b"] = "hello"
 ```

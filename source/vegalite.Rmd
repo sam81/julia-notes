@@ -1,10 +1,10 @@
-# Vegalite
+# Vegalite {#vegalite}
 
 [VegaLite.jl](https://github.com/fredo-dedup/VegaLite.jl) is a plotting package for Julia based on [Vega-Lite](https://vega.github.io/vega-lite/). Its two most notable features are that 1) it is based on a grammar of graphics, like the `ggplot2` R package; 2) it produces interactive html graphics (but they can also be saved on disk in other static formats such as pdf or png).
 
 Using Vegalite.jl feels a lot like using `ggplot2`, so users of `ggplot2` in R will feel right at home.
 
-```{julia}
+```{julia, results="hide"}
 using VegaLite
 using RDatasets
 iris = dataset("datasets", "iris")
@@ -15,7 +15,7 @@ p = iris |> @vlplot(:point,
                     color=:Species,
                     width=400,
                     height=400
-                    );
+                    )
 save("../Figures/iris_sep_wd_by_len.png", p)
 
 ```
@@ -27,7 +27,7 @@ Note that you may need to either call `p` or `p |> display` to show the plot. De
 
 Now that we have this first plot, let's do a few tweaks it to improve its appearance. Currently by the default when you hover with the mouse on the points nothing happens, but you can enable tooltips as follows:
 
-```{julia, eval=FALSE}
+```{julia, eval=FALSE, results="hide"}
 p = iris |> @vlplot(:point,
                     x=:SepalLength,
                     y=:SepalWidth,
@@ -35,12 +35,12 @@ p = iris |> @vlplot(:point,
                     width=400,
                     height=400,
                     tooltip=[{field="SepalLength"}, {field="SepalWidth"}]
-                    );
+                    )
 ```
 
 By default, the axes start from zero. If you do not want the axes to start from zero you need to specify this as follows:
 
-```{julia}
+```{julia, results="hide"}
 p = iris |> @vlplot(:point,
                            x={:SepalLength, scale={zero=false}},
                            y={:SepalWidth, scale={zero=false}},
@@ -48,12 +48,12 @@ p = iris |> @vlplot(:point,
                            width=400,
                            height=400,
                            tooltip=[{field="SepalLength"}, {field="SepalWidth"}]
-                           );
+                           )
 ```
 
 We can add prettier labels to the x and y axis as follows:
 
-```{julia}
+```{julia, results="hide"}
 p = iris |> @vlplot(:point,
                            x={:SepalLength, 
                               scale={zero=false},
@@ -65,12 +65,12 @@ p = iris |> @vlplot(:point,
                            width=400,
                            height=400,
                            tooltip=[{field="SepalLength"}, {field="SepalWidth"}]
-                           );
+                           )
 ```
 
 We can remove the grid as well:
 
-```{julia}
+```{julia, results="hide"}
 p = iris |> @vlplot(:point,
                            x={:SepalLength, 
                               scale={zero=false},
@@ -86,13 +86,13 @@ p = iris |> @vlplot(:point,
                            width=400,
                            height=400,
                            tooltip=[{field="SepalLength"}, {field="SepalWidth"}]
-                           );
+                           )
 ```
 
 
 ## Faceting
 
-```{julia}
+```{julia, results="hide"}
 oats = dataset("MASS", "oats")
 oats[:Nitro] = [parse(Float64, split(oats[:N][i], "c")[1]) for i=1:length(oats[:N])]
 

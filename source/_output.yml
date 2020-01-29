@@ -7,9 +7,6 @@ bookdown::gitbook:
       collapse: section
       after: |
         <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
-    edit:
-      link: https://github.com/sam81/julia-notes/edit/master/%s
-      text: "Edit"
     sharing:
       github: yes
       facebook: no

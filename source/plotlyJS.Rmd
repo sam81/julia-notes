@@ -1,4 +1,4 @@
-# PlotlyJS
+# PlotlyJS {#plotlyJS}
 
 [PlotlyJS.jl](https://github.com/sglyon/PlotlyJS.jl) is a Julia package generate interactive html figures. The figures can be saved to disk either as html pages, or in a variety of formats (pdf, png, etc...) through the [ORCA.jl](https://github.com/sglyon/ORCA.jl) package.
 

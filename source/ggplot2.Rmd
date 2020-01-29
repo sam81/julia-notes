@@ -1,8 +1,8 @@
-# ggplot2 via RCall
+# ggplot2 via RCall {#ggplot2}
 
 It's possible to use `ggplot2` via the functionality provided by the `RCall` package in Julia:
 
-```{julia}
+```{julia, results="hide"}
 using RCall
 using RDatasets
 oats = dataset("MASS", "oats")

@@ -1,6 +1,6 @@
-# Installing and managing packages 
+# Installing and managing packages {#packageManagement}
 
-There are two ways of installing and managing packages in Julia. One is through functions at the Julia REPL, the other is through the package manager REPL. For example, to install the `Gadfly` package from the Julia REPL you can use the `Pkg.add` function:
+There are two ways of installing and managing packages in Julia. One is through functions at the Julia REPL, the other is through the *package manager REPL*. For example, to install the `Gadfly` package from the Julia REPL you can use the `Pkg.add` function:
 
 ```{julia, eval=FALSE}
 Pkg.add("Gadfly")
