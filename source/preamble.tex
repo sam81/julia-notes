@@ -1,0 +1,45 @@
+%\usepackage[bitstream-charter]{mathdesign}
+%\usepackage{mathpazo,bm}
+\usepackage{xcolor}
+\definecolor{linkcol}{RGB}{0, 51, 153}
+%\definecolor{linkcol}{RGB}{33, 107, 217}
+\definecolor{seccol}{RGB}{60, 77, 110}
+\usepackage{hyperref}
+\hypersetup{pdftitle=test1,
+            pdfauthor=Samuele Carcagno,
+            pdfpagemode=UseOutlines,
+            pdfstartview=FitH,
+            pdfkeywords={Julia Notes},
+            colorlinks=true,
+            linkcolor=linkcol,
+            citecolor=linkcol,
+            filecolor=linkcol,
+            urlcolor=linkcol  
+} 
+
+\usepackage[backend=biber, style=apa, autocite=inline]{biblatex}
+\DeclareLanguageMapping{english}{english-apa}
+%\addbibresource{refs_long.bib}
+\usepackage{microtype}
+\usepackage{fancyhdr}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \rfoot{\thepage}
+  \renewcommand{\footrulewidth}{0.4pt}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+\fancypagestyle{bodypagestyle}{%
+    \fancyhf{}
+    % \rhead{Rapport travaux}
+    % \lhead{\textsc{Carcagno}}
+    % \rfoot{\thepage}
+    \fancyhead[LE,RO]{Julia Notes}
+    \fancyhead[LO,RE]{\textsc{Carcagno}}
+    \fancyfoot[LE,RO]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+}
+
+\usepackage{fontspec}
+\setmainfont{Charis SIL}

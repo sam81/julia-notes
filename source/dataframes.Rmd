@@ -1,0 +1,175 @@
+# DataFrames
+
+In Julia dataframes are handled by an addon package. It can be installed with:
+```{julia, eval=FALSE}
+Pkg.add("DataFrames")
+```
+it's very likely that you will want to read and write dataframes as CSV files at some stage. This functionality is provided by the `CSV.jl` package, so you should install it as well:
+```{julia, eval=FALSE}
+Pkg.add("CSV")
+```
+to use the `DataFrames` and `CSV` packages you need to load them:
+```{julia}
+using CSV
+using DataFrames
+```
+	
+For the examples we'll use the `iris` dataset from the `RDatasets` package, so
+we'll need to install it first if it's not already installed:
+      
+```{julia, eval=FALSE}
+Pkg.add("RDatasets")
+```
+we can now load it and load the `iris` dataset:
+   
+```{julia, eval=TRUE}
+using RDatasets
+iris = dataset("datasets", "iris")
+```
+	
+let's create a numeric vector and a string vector of the same length, and then put them in a dataframe:
+
+```{julia}
+y = rand(10)
+cnd = [["a" for i=1:5]; ["b" for i=1:5]]
+resFrame =  DataFrame(y=y, cnd=cnd)
+```
+
+to access the columns of a dataframe use the following syntax:
+
+```{julia, results="hide"}
+resFrame[!,:y] #retrieves the column named `y`
+resFrame[!,:cnd] #retrieves the column named `cnd`
+```
+
+note that `:y` or `:cnd` are *Symbols*:
+
+```{julia}
+typeof(:y)
+```
+
+sometimes it is necessary to access the column of a dataframe using a string. You can do so by converting a string to a symbol:
+
+```{julia, results="hide"}
+resFrame[!,Symbol("y")]
+```
+
+you can also retrieve a column by its column number
+
+```{julia, results="hide"}
+resFrame[!,1]
+```
+
+to write a dataframe to a text of CSV file, use:
+
+```{julia, results="hide"}
+CSV.write("dataframe.csv", resFrame)
+```
+
+it is also possible to specify a separator, note that the separator character must be enclosed by
+single ticks `''`:
+
+```{julia, results="hide"}
+CSV.write("dataframe.csv", resFrame, delim=';')
+```
+
+To read a dataframe from a text file, use:
+```{julia, results="hide"}
+dat = CSV.read("dataframe.csv", delim=';')
+```
+
+
+### Displaying data on screen
+
+To show the first few rows of a dataframe on screen you can use the `first`
+function, which takes as arguments the name of the dataframe and the number of
+rows that you want to show:
+     	 
+```{julia, eval=TRUE}
+first(iris, 4)
+```
+
+similarly to show the last few columns you can use the `last` command:
+	  
+```{julia, eval=TRUE}
+last(iris, 4)
+```
+
+If you have a dataframe with too many columns to fit the screen some will be truncated. To get around this you can use:
+   
+```{julia, eval=FALSE}
+##create dataframe with lost of columns
+df = DataFrame((Symbol('a' + i) => rand(10) for i in 0:100)...)
+show(df, allcols=true)
+```
+		  
+## Selecting rows
+
+We've already seen how we can select a given column of a dataframe. Selecting
+rows of a dataframe on the basis of one or more conditions is another fundamental
+operation. The following command returns a boolean vector indicating whether 
+each element in the `Species` column of the iris datasets is "setosa" or not:
+
+```{julia, eval=TRUE}
+idx = iris[!,:Species] .== "setosa"
+```
+
+we can use this vector to select the corresponding rows of the dataframe:
+   	
+```{julia, eval=TRUE}
+iris[idx, :];
+```
+
+or more succintly we could achieve the same result with a single command:
+   
+```{julia, eval=TRUE}
+iris[(iris[!,:Species] .== "setosa"), :];
+```
+
+we can also setect rows on the basis of multiple conditions, for example
+only the ones for the setosa specimens with a petal length greater than 1.5:
+     	
+```{julia, eval=TRUE}
+iris[(iris[!,:Species] .== "setosa") .& (iris[!,:PetalLength] .> 1.5), :]	    
+```
+
+The `DataFramesMeta` package also provides convenient functions for selecting rows
+of a dataframes on the basis of one or more conditions.
+
+```{julia, eval=TRUE}
+using DataFramesMeta
+@where(iris, :Species .== "setosa")
+```
+	
+```{julia, eval=TRUE}
+@where(iris, :Species .== "setosa", :PetalLength .> 1.5)
+```	     	
+
+### Summarizing data
+
+Summarizing data with the functions providing in the `DataFrames` package is
+somwhat verbose:	   
+	    
+```{julia, eval=TRUE}
+using Statistics	
+summIris = by(iris, [:Species], df -> DataFrame(meanPetalWidth=mean(df[!,:PetalWidth])))
+```
+	
+using the macros in `DataFramesMeta` is much better
+
+```{julia, eval=TRUE}
+summIris = @linq iris |> groupby(:Species) |> based_on(x = mean(:PetalWidth))
+```
+
+there are slightly different ways of achieving the same result:
+
+```{julia, eval=TRUE}
+@linq iris |> by(:Species, x=mean(:SepalWidth))
+```
+	  	
+or:
+		
+```{julia, eval=TRUE}
+@based_on(groupby(iris, :Species), x=mean(:PetalWidth))		 	
+```	
+		

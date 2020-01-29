@@ -1,0 +1,10 @@
+change filename "test1.Rmd" to fName, where fName is the desiderd file name
+
+change "test1" to fName in:
+
+* _bookdown.yml
+* _output.yml
+* fName.Rmd
+* build_gitbook
+* build_html
+* build_pdf

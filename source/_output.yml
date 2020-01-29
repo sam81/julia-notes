@@ -1,0 +1,27 @@
+bookdown::gitbook:
+  css: style.css
+  split_by: none
+  config:
+    toc:
+      before: |
+      collapse: section
+      after: |
+        <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+    edit:
+      link: https://github.com/sam81/julia-notes/edit/master/%s
+      text: "Edit"
+    sharing:
+      github: yes
+      facebook: no
+    download: ["julia_notes.pdf", "julia_notes.epub"]	
+bookdown::pdf_book:
+  includes:
+        in_header: preamble.tex
+  latex_engine: lualatex
+  citation_package: biblatex
+  keep_tex: yes
+  toc_depth: 2
+  toc: False
+bookdown::epub_book: default
+bookdown::html_book:
+  split_by: none
