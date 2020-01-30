@@ -1,5 +1,9 @@
 # Vegalite {#vegalite}
 
+```{julia, results="hide", echo=FALSE}
+include("global_parameters.jl")
+```
+
 [VegaLite.jl](https://github.com/fredo-dedup/VegaLite.jl) is a plotting package for Julia based on [Vega-Lite](https://vega.github.io/vega-lite/). Its two most notable features are that 1) it is based on a grammar of graphics, like the `ggplot2` R package; 2) it produces interactive html graphics (but they can also be saved on disk in other static formats such as pdf or png).
 
 Using Vegalite.jl feels a lot like using `ggplot2`, so users of `ggplot2` in R will feel right at home.
@@ -13,19 +17,24 @@ p = iris |> @vlplot(:point,
                     x=:SepalLength,
                     y=:SepalWidth,
                     color=:Species,
-                    width=400,
-                    height=400
+                    width=250,
+                    height=250
                     )
-save("../Figures/iris_sep_wd_by_len.png", p)
-
 ```
 
-Note that you may need to either call `p` or `p |> display` to show the plot. Depending on wheter you're using the terminal or a IDE the plot may open up in a browser window. The [ElectronDisplay.jl](https://github.com/queryverse/ElectronDisplay.jl) package provides a convenient plotting window that can show VegaLite plots.
+```{julia, results="hide", echo=FALSE}
+save("../Figures/iris_sep_wd_by_len.png", p)
+save("../Figures/iris_sep_wd_by_len.pdf", p)
+```
 
-![](../Figures/iris_sep_wd_by_len.png)
+Note that you may need to either call `p` or `p |> display` to show the plot. Depending on whether you're using the terminal or a IDE the plot may open up in a browser window. The [ElectronDisplay.jl](https://github.com/queryverse/ElectronDisplay.jl) package provides a convenient plotting window that can show VegaLite plots.
+
+```{r, echo=FALSE, results="asis"}
+knitr::include_graphics("../Figures/iris_sep_wd_by_len.png", auto_pdf=TRUE)
+```
 
 
-Now that we have this first plot, let's do a few tweaks it to improve its appearance. Currently by the default when you hover with the mouse on the points nothing happens, but you can enable tooltips as follows:
+Now that we have this first plot, let's make a few tweaks it to improve its appearance. Currently by the default when you hover with the mouse on the points nothing happens, but you can enable tooltips as follows:
 
 ```{julia, eval=FALSE, results="hide"}
 p = iris |> @vlplot(:point,
@@ -101,7 +110,13 @@ p = oats |> @vlplot(:point,
                     y=:Y,
                     row=:B,
                     column=:V)
+
+```{julia, results="hide", echo=FALSE}
 save("../Figures/vegalite_oats.png", p)
+save("../Figures/vegalite_oats.pdf", p)
 ```
 
-![](../Figures/vegalite_oats.png)
+```{r, echo=FALSE, results="asis"}
+knitr::include_graphics("../Figures/vegalite_oats.png", auto_pdf=TRUE)
+```
+

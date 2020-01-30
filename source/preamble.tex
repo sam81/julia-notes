@@ -5,11 +5,11 @@
 %\definecolor{linkcol}{RGB}{33, 107, 217}
 \definecolor{seccol}{RGB}{60, 77, 110}
 \usepackage{hyperref}
-\hypersetup{pdftitle=test1,
+\hypersetup{pdftitle=Julia Notes,
             pdfauthor=Samuele Carcagno,
             pdfpagemode=UseOutlines,
             pdfstartview=FitH,
-            pdfkeywords={Julia Notes},
+            pdfkeywords={julia, scientific computing, programming, programming languages},
             colorlinks=true,
             linkcolor=linkcol,
             citecolor=linkcol,
@@ -32,14 +32,78 @@
 
 \fancypagestyle{bodypagestyle}{%
     \fancyhf{}
-    % \rhead{Rapport travaux}
-    % \lhead{\textsc{Carcagno}}
-    % \rfoot{\thepage}
     \fancyhead[LE,RO]{Julia Notes}
-    \fancyhead[LO,RE]{\textsc{Carcagno}}
+    \fancyhead[LO,RE]{\leftmark}
     \fancyfoot[LE,RO]{\thepage}
 \renewcommand{\footrulewidth}{0.4pt}
 }
 
 \usepackage{fontspec}
 \setmainfont{Charis SIL}
+%\setmainfont{GFS Neohellenic}
+%\setmonofont{Lekton}
+\setmonofont{Ubuntu Mono}
+\setsansfont{GFS Neohellenic}
+
+
+%%%%
+
+\usepackage{framed,color}
+\definecolor{shadecolor}{RGB}{248,248,248}
+
+\makeatletter
+\newenvironment{kframe}{%
+\medskip{}
+\setlength{\fboxsep}{.8em}
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\makeatletter
+\@ifundefined{Shaded}{
+}{\renewenvironment{Shaded}{\begin{kframe}}{\end{kframe}}}
+\makeatother
+
+\newenvironment{rmdblock}[1]
+  {
+  \begin{itemize}
+  \renewcommand{\labelitemi}{
+    \raisebox{-.7\height}[0pt][0pt]{
+      {\setkeys{Gin}{width=3em,keepaspectratio}\includegraphics{images/#1}}
+    }
+  }
+  \setlength{\fboxsep}{1em}
+  \begin{kframe}
+  \item
+  }
+  {
+  \end{kframe}
+  \end{itemize}
+  }
+\newenvironment{rmdnote}
+  {\begin{rmdblock}{note}}
+  {\end{rmdblock}}
+\newenvironment{rmdcaution}
+  {\begin{rmdblock}{caution}}
+  {\end{rmdblock}}
+\newenvironment{rmdimportant}
+  {\begin{rmdblock}{important}}
+  {\end{rmdblock}}
+\newenvironment{rmdtip}
+  {\begin{rmdblock}{tip}}
+  {\end{rmdblock}}
+\newenvironment{rmdwarning}
+  {\begin{rmdblock}{warning}}
+  {\end{rmdblock}}

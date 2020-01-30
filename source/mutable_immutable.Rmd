@@ -1,7 +1,8 @@
 # Mutable and immutable objects
 
-
-_Warning:_ This topic can be somewhat mind-boggling! While I strive to write correct definitions and explanations, remember that these are simply my notes on using Julia, and I'm not an expert! So take my words and explanations with a grain of salt, 	and drop me an e-mail or fork these notes on github to fix them if you find errors.
+```{block2, type='rmdwarning'}
+This topic can be somewhat mind-boggling! While I strive to write correct definitions and explanations, remember that these are simply my notes on using Julia, and I'm not an expert! So take my words and explanations with a grain of salt, 	and drop me an e-mail or fork these notes on github to fix them if you find errors.
+```
 	
 
 Objects in Julia can either be mutable or immutable, you can check whether
@@ -90,8 +91,9 @@ println(objectid(y))
 
 you're not modifying the mutable object to which `x` was bound, you're binding `x` to a totally new object! So `x` and `y` will be bound to different objects.
 
-!!! tip
-    It may help to think of a mutable object as a container of items.
+```{block2, type='rmdtip'}
+It may help to think of a mutable object as a container of items.
+``` 
 	
 When you change an item in the container the binding of a variable to the container doesn't change, but if you change the container... the binding will change. Here's anothe example in which we change the container:
 
@@ -158,8 +160,9 @@ x
 
 we can see that it has not changed. That's because `x` is bound to an immutable object in this case, and the variable `x` inside the function is in a different scope from the variable `x` outside the function.
 
-
-_Warning:_ The moral of the story above is: Watch out when you pass mutable objects as function arguments!
+```{block2, type='rmdimportant'}
+The moral of the story above is: Watch out when you pass mutable objects as function arguments!
+```
 	
 Another important side effect of the difference between mutable and immutable objects involves the local scope introduced by certain code blocks, such as `for` loops. Variables from the global scope are available for reading in the local scope, but not for writing. So for example the `x` in the `for` loop below will be bound to a new object in the local scope of the loop:
 

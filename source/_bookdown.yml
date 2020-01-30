@@ -1,5 +1,11 @@
 new_session: yes
 
+# rmd_files: [
+#   "julia_notes.Rmd",
+#   "plotlyJS.Rmd",
+#   "mutable_immutable.Rmd"
+# ]
+
 rmd_files: [
   "julia_notes.Rmd",
   "simple_intro.Rmd",
@@ -8,6 +14,7 @@ rmd_files: [
   "installing_packages.Rmd",
   "dataframes.Rmd",
   "workflow.Rmd",
+  "plotlyJS.Rmd",
   "gadfly.Rmd",
   "ggplot2.Rmd",
   "vegalite.Rmd",

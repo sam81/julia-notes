@@ -1,14 +1,27 @@
 # PyPlot (matplotlib) {#pyplot}
 
+```{julia, results="hide", echo=FALSE}
+include("global_parameters.jl")
+```
+
 ```{julia, results="hide"}
 using PyCall
 using PyPlot
 x = collect(0:0.1:2*pi)
 plot(x, sin.(x))
-savefig("../Figures/pyplot_sine.png")
 ```
 
-![](../Figures/pyplot_sine.png)
+```{julia, results="hide", echo=FALSE}
+fig = gcf()
+fig.set_size_inches((size1c,size1c))
+savefig("../Figures/pyplot_sine.png")
+savefig("../Figures/pyplot_sine.pdf")
+```
+
+```{r, echo=FALSE, results="asis"}
+knitr::include_graphics("../Figures/pyplot_sine.png", auto_pdf=TRUE)
+```
+
 
 ### Saving multiple plots in one pdf with PyPlot
 
