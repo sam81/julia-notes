@@ -8,7 +8,7 @@ site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: memoir
 classoption: twoside, article
-fontsize: 12pt
+fontsize: 14pt
 bibliography: [refslong.bib]
 link-citations: yes
 github-repo: sam81/julia-notes

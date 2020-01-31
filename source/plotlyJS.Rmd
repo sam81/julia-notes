@@ -2,6 +2,7 @@
 
 ```{julia, results="hide", echo=FALSE}
 include("global_parameters.jl")
+size1cplotlypng = size1cpx*3
 ```
 
 [PlotlyJS.jl](https://github.com/sglyon/PlotlyJS.jl) is a Julia package generate interactive html figures. The figures can be saved to disk either as html pages, or in a variety of formats (pdf, png, etc...) through the [ORCA.jl](https://github.com/sglyon/ORCA.jl) package.
@@ -32,7 +33,7 @@ p = plot(x, sin.(x)); #line plot from two arrays
 ```
 
 ```{julia, results="hide", echo=FALSE}
-savefig(p, "../Figures/plotly_line_plot.png", width=size1cpx, height=size1cpx)
+savefig(p, "../Figures/plotly_line_plot.png", width=size1cplotlypng, height=size1cplotlypng)
 savefig(p, "../Figures/plotly_line_plot.pdf", width=size1cpx, height=size1cpx)
 ```
 
@@ -48,7 +49,7 @@ p = plot(x, y, mode="markers", marker_color="black"); #line plot from two arrays
 ```
 
 ```{julia, results="hide", echo=FALSE}
-savefig(p, "../Figures/plotly_scatter_plot.png", width=size1cpx, height=size1cpx)
+savefig(p, "../Figures/plotly_scatter_plot.png", width=size1cplotlypng, height=size1cplotlypng)
 savefig(p, "../Figures/plotly_scatter_plot.pdf", width=size1cpx, height=size1cpx)
 ```
 
@@ -66,7 +67,7 @@ p = plot([s1], ly);
 ```
 
 ```{julia, results="hide", echo=FALSE}
-savefig(p, "../Figures/plotly_line_plot2.png", width=size1cpx, height=size1cpx)
+savefig(p, "../Figures/plotly_line_plot2.png", width=size1cplotlypng, height=size1cplotlypng)
 savefig(p, "../Figures/plotly_line_plot2.pdf", width=size1cpx, height=size1cpx)
 ```
 
@@ -80,12 +81,10 @@ you can add more than one trace to a plot:
 s2 = scatter(;x=x, y=sin.(x));
 ly = Layout(;title="sine & cosine", xaxis_title="x axis", yaxis_title="y axis");
 p = plot([s1,s2], ly);
-savefig(p, "../Figures/plotly_line_plot_2_traces.png", width=size1cpx, height=size1cpx)
-savefig(p, "../Figures/plotly_line_plot_2_traces.pdf", width=size1cpx, height=size1cpx)
 ```
 
 ```{julia, results="hide", echo=FALSE}
-savefig(p, "../Figures/plotly_line_plot_2_traces.png", width=size1cpx, height=size1cpx)
+savefig(p, "../Figures/plotly_line_plot_2_traces.png", width=size1cplotlypng, height=size1cplotlypng)
 savefig(p, "../Figures/plotly_line_plot_2_traces.pdf", width=size1cpx, height=size1cpx)
 ```
 
@@ -93,7 +92,7 @@ savefig(p, "../Figures/plotly_line_plot_2_traces.pdf", width=size1cpx, height=si
 knitr::include_graphics("../Figures/plotly_line_plot_2_traces.png", auto_pdf=TRUE)
 ```
 
-you can tweak several aspects of the plots. We'll start with changing some of the default options that I don't really like. For example, by default option when hovering with the mouse on the plot is set to `compare`, which may be useful to compare two traces, but I find generally less useful than the other option, which is to show the values of the closet data point. You can change this by passing an option in the layout:
+you can tweak several aspects of the plots. We'll start with changing some of the default options that I don't really like. For example, the default option when hovering with the mouse on the plot is set to `compare`, which may be useful to compare two traces, but I find generally less useful than the other option, which is to show the values of the closest data point. You can change this by passing an option in the layout:
 
 ```{julia}
 ly = Layout(;title="sine & cosine", xaxis_title="x axis",

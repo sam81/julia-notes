@@ -3,7 +3,8 @@ new_session: yes
 # rmd_files: [
 #   "julia_notes.Rmd",
 #   "plotlyJS.Rmd",
-#   "mutable_immutable.Rmd"
+#   "mutable_immutable.Rmd",
+#   "random.Rmd"
 # ]
 
 rmd_files: [
@@ -13,6 +14,7 @@ rmd_files: [
   "mutable_immutable.Rmd",
   "installing_packages.Rmd",
   "dataframes.Rmd",
+  "random.Rmd",
   "workflow.Rmd",
   "plotlyJS.Rmd",
   "gadfly.Rmd",
