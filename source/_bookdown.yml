@@ -1,29 +1,23 @@
-new_session: yes
+new_session: yes 
 
 rmd_files: [
-   "julia_notes.Rmd",
-    "ggplot2.Rmd"
+"00_julia_notes.Rmd",
+"01_simple_intro.Rmd",
+"02_datatypes.Rmd",
+"03_mutable_immutable.Rmd",
+"04_installing_packages.Rmd",
+"05_dataframes.Rmd",
+"06_random.Rmd",
+"07_workflow.Rmd",
+"08_plotlyJS.Rmd",
+"09_gadfly.Rmd",
+"10_ggplot2.Rmd",
+"11_vegalite.Rmd",
+"12_pyplot.Rmd",
+"13_parallel_processing.Rmd",
+"14_generating_packages.Rmd",
+"15_sound.Rmd",
+"16_references.Rmd",
 ]
 
-# rmd_files: [
-#   "julia_notes.Rmd",
-#   "simple_intro.Rmd",
-#   "datatypes.Rmd",
-#   "mutable_immutable.Rmd",
-#   "installing_packages.Rmd",
-#   "dataframes.Rmd",
-#   "random.Rmd",
-#   "workflow.Rmd",
-#   "plotlyJS.Rmd",
-#   "gadfly.Rmd",
-#   "ggplot2.Rmd",
-#   "vegalite.Rmd",
-#   "pyplot.Rmd",
-#   "parallel_processing.Rmd",
-#   "generating_packages.Rmd",
-#   "sound.Rmd",
-#   "references.Rmd"
-# ]
-
 book_filename: julia_notes
-
