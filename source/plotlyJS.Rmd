@@ -5,7 +5,7 @@ include("global_parameters.jl")
 size1cplotlypng = size1cpx*3
 ```
 
-[PlotlyJS.jl](https://github.com/sglyon/PlotlyJS.jl) is a Julia package generate interactive html figures. The figures can be saved to disk either as html pages, or in a variety of formats (pdf, png, etc...) through the [ORCA.jl](https://github.com/sglyon/ORCA.jl) package.
+[PlotlyJS.jl](https://github.com/sglyon/PlotlyJS.jl) is a Julia package to generate interactive html figures. The figures can be saved to disk either as html pages, or in a variety of formats (pdf, png, etc...) through the [ORCA.jl](https://github.com/sglyon/ORCA.jl) package.
 
 ```{block2, type='rmdnote'}
 The figures shown in the html version of this document will not have interactive features because they've been saved as png files.
@@ -33,7 +33,7 @@ p = plot(x, sin.(x)); #line plot from two arrays
 ```
 
 ```{julia, results="hide", echo=FALSE}
-savefig(p, "../Figures/plotly_line_plot.png", width=size1cplotlypng, height=size1cplotlypng)
+savefig(p, "../Figures/plotly_line_plot.png", scale=3)
 savefig(p, "../Figures/plotly_line_plot.pdf", width=size1cpx, height=size1cpx)
 ```
 
@@ -49,7 +49,7 @@ p = plot(x, y, mode="markers", marker_color="black"); #line plot from two arrays
 ```
 
 ```{julia, results="hide", echo=FALSE}
-savefig(p, "../Figures/plotly_scatter_plot.png", width=size1cplotlypng, height=size1cplotlypng)
+savefig(p, "../Figures/plotly_scatter_plot.png", scale=3)
 savefig(p, "../Figures/plotly_scatter_plot.pdf", width=size1cpx, height=size1cpx)
 ```
 
@@ -67,7 +67,7 @@ p = plot([s1], ly);
 ```
 
 ```{julia, results="hide", echo=FALSE}
-savefig(p, "../Figures/plotly_line_plot2.png", width=size1cplotlypng, height=size1cplotlypng)
+savefig(p, "../Figures/plotly_line_plot2.png", scale=3)
 savefig(p, "../Figures/plotly_line_plot2.pdf", width=size1cpx, height=size1cpx)
 ```
 
@@ -84,7 +84,7 @@ p = plot([s1,s2], ly);
 ```
 
 ```{julia, results="hide", echo=FALSE}
-savefig(p, "../Figures/plotly_line_plot_2_traces.png", width=size1cplotlypng, height=size1cplotlypng)
+savefig(p, "../Figures/plotly_line_plot_2_traces.png", scale=3)
 savefig(p, "../Figures/plotly_line_plot_2_traces.pdf", width=size1cpx, height=size1cpx)
 ```
 

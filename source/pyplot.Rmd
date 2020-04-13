@@ -2,6 +2,11 @@
 
 ```{julia, results="hide", echo=FALSE}
 include("global_parameters.jl")
+using PyCall
+using PyPlot
+matplotlib.rcParams["figure.figsize"] = [size1c*1.5, size1c*1.5]
+
+##
 ```
 
 ```{julia, results="hide"}

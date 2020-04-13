@@ -2,6 +2,9 @@
 
 ```{julia, results="hide", echo=FALSE}
 include("global_parameters.jl")
+pdfwidth = 300
+pdfheight = 300
+using Setfield
 ```
 
 [VegaLite.jl](https://github.com/fredo-dedup/VegaLite.jl) is a plotting package for Julia based on [Vega-Lite](https://vega.github.io/vega-lite/). Its two most notable features are that 1) it is based on a grammar of graphics, like the `ggplot2` R package; 2) it produces interactive html graphics (but they can also be saved on disk in other static formats such as pdf or png).
@@ -17,19 +20,20 @@ p = iris |> @vlplot(:point,
                     x=:SepalLength,
                     y=:SepalWidth,
                     color=:Species,
-                    width=250,
-                    height=250
+                    width=400,
+                    height=400
                     )
 ```
 
 ```{julia, results="hide", echo=FALSE}
 save("../Figures/iris_sep_wd_by_len.png", p)
+p = @set p.width = pdfwidth; p = @set p.height = pdfheight;
 save("../Figures/iris_sep_wd_by_len.pdf", p)
 ```
 
 Note that you may need to either call `p` or `p |> display` to show the plot. Depending on whether you're using the terminal or a IDE the plot may open up in a browser window. The [ElectronDisplay.jl](https://github.com/queryverse/ElectronDisplay.jl) package provides a convenient plotting window that can show VegaLite plots.
 
-```{r, echo=FALSE, results="asis"}
+```{r, echo=FALSE, results="asis", out.width="100%"}
 knitr::include_graphics("../Figures/iris_sep_wd_by_len.png", auto_pdf=TRUE)
 ```
 
@@ -43,7 +47,8 @@ p = iris |> @vlplot(:point,
                     color=:Species,
                     width=400,
                     height=400,
-                    tooltip=[{field="SepalLength"}, {field="SepalWidth"}]
+                    tooltip=[{field="SepalLength"},
+                             {field="SepalWidth"}]
                     )
 ```
 
@@ -56,7 +61,8 @@ p = iris |> @vlplot(:point,
                            color=:Species,
                            width=400,
                            height=400,
-                           tooltip=[{field="SepalLength"}, {field="SepalWidth"}]
+                    tooltip=[{field="SepalLength"},
+                             {field="SepalWidth"}]
                            )
 ```
 
@@ -64,38 +70,40 @@ We can add prettier labels to the x and y axis as follows:
 
 ```{julia, results="hide"}
 p = iris |> @vlplot(:point,
-                           x={:SepalLength, 
-                              scale={zero=false},
-                              axis={title="Sepal Length (cm)"}},
-                           y={:SepalWidth, 
-                              scale={zero=false},
-                              axis={title="Sepal Width (cm)"}},
-                           color=:Species,
-                           width=400,
-                           height=400,
-                           tooltip=[{field="SepalLength"}, {field="SepalWidth"}]
-                           )
+                    x={:SepalLength, 
+                       scale={zero=false},
+                       axis={title="Sepal Length (cm)"}},
+                    y={:SepalWidth, 
+                       scale={zero=false},
+                       axis={title="Sepal Width (cm)"}},
+                    color=:Species,
+                    width=400,
+                    height=400,
+                    tooltip=[{field="SepalLength"},
+                             {field="SepalWidth"}]
+                    )
 ```
 
 We can remove the grid as well:
 
 ```{julia, results="hide"}
 p = iris |> @vlplot(:point,
-                           x={:SepalLength, 
-                              scale={zero=false},
-                              axis={title="Sepal Length (cm)",
-                                    grid=false}
-                             },
-                           y={:SepalWidth, 
-                              scale={zero=false},
-                              axis={title="Sepal Width (cm)",
-                              grid=false}
-                             },
-                           color=:Species,
-                           width=400,
-                           height=400,
-                           tooltip=[{field="SepalLength"}, {field="SepalWidth"}]
-                           )
+                    x={:SepalLength, 
+                       scale={zero=false},
+                       axis={title="Sepal Length (cm)",
+                             grid=false}
+                       },
+                    y={:SepalWidth, 
+                       scale={zero=false},
+                       axis={title="Sepal Width (cm)",
+                             grid=false}
+                       },
+                    color=:Species,
+                    width=400,
+                    height=400,
+                    tooltip=[{field="SepalLength"},
+                             {field="SepalWidth"}]
+                    )
 ```
 
 
@@ -103,7 +111,8 @@ p = iris |> @vlplot(:point,
 
 ```{julia, results="hide"}
 oats = dataset("MASS", "oats")
-oats[:Nitro] = [parse(Float64, split(oats[:N][i], "c")[1]) for i=1:length(oats[:N])]
+oats[!,:Nitro] = [parse(Float64, split(oats[!,:N][i], "c")[1])
+                  for i=1:length(oats[!,:N])]
 
 p = oats |> @vlplot(:point,
                     x=:Nitro,
@@ -113,6 +122,7 @@ p = oats |> @vlplot(:point,
 
 ```{julia, results="hide", echo=FALSE}
 save("../Figures/vegalite_oats.png", p)
+##p = @set p.width = pdfwidth; p = @set p.height = pdfheight*4;
 save("../Figures/vegalite_oats.pdf", p)
 ```
 
